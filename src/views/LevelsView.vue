@@ -92,16 +92,6 @@ function getLevelTypeName(type) {
   }
   return typeNames[type] || '游戏'
 }
-
-// 调试：输出关卡数据
-console.log('=== 关卡数据调试 ===')
-levels.forEach((level, idx) => {
-  console.log(`关卡 ${level.id}: ${level.name}`)
-  console.log(`  汉字: ${level.hanzi ? level.hanzi.join(', ') : '无'}`)
-  console.log(`  类型: ${level.type}`)
-  console.log(`  难度: ${level.level}`)
-})
-console.log('==================')
 </script>
 
 <style scoped>

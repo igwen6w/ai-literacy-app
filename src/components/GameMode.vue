@@ -194,7 +194,7 @@ import { calculateStars, getLevelById } from '@/data/levels'
 
 const props = defineProps({
   levelId: {
-    type: Number,
+    type: [Number, String],
     required: true
   }
 })
@@ -248,9 +248,6 @@ function loadLevel() {
   // 从关卡配置加载数据
   const levelConfig = getLevelById(props.levelId)
 
-  console.log(`=== 加载关卡 ${props.levelId} ===`)
-  console.log('关卡配置:', levelConfig)
-
   if (!levelConfig) {
     // 如果没有找到配置，使用默认配置
     level.value = {
@@ -262,34 +259,24 @@ function loadLevel() {
       type: 'learn',
       level: 1
     }
-    console.log('使用默认配置')
   } else {
     level.value = levelConfig
-    console.log('使用配置文件:', level.value.name, level.value.hanzi)
   }
 
   // 加载关卡汉字
   if (level.value.hanzi && level.value.hanzi.length > 0) {
-    console.log('关卡汉字列表:', level.value.hanzi)
-    levelHanzi.value = level.value.hanzi.map(char => {
-      const found = findHanzi(char)
-      if (!found) {
-        console.error(`  ⚠️ 汉字 "${char}" 在数据库中不存在！`)
-      }
-      return found || { char, pinyin: '', meaning: '', emoji: '❓', example: '', example2: '' }
-    })
-    console.log('最终加载的汉字:', levelHanzi.value.map(h => h.char))
+    levelHanzi.value = level.value.hanzi.map(char =>
+      findHanzi(char) || { char, pinyin: '', meaning: '', emoji: '❓', example: '', example2: '' }
+    )
   } else {
     // 从对应级别获取汉字
     const hanziList = getHanziByLevel(level.value.level || 1)
     const count = Math.min(level.value.hanziCount || 5, hanziList.length)
     levelHanzi.value = hanziList.slice(0, count)
-    console.log('从级别获取汉字:', levelHanzi.value.map(h => h.char))
   }
 
   // 获取已获得的星级
   currentStars.value = progress.getLevelStars(props.levelId)
-  console.log('========================')
 }
 
 function startGame() {

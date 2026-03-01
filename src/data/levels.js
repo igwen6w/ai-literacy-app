@@ -124,7 +124,7 @@ export const levels = [
 
 // 根据关卡ID获取关卡
 export function getLevelById(id) {
-  return levels.find(l => l.id === id)
+  return levels.find(l => l.id === parseInt(id))
 }
 
 // 获取已解锁的关卡
