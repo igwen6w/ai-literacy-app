@@ -90,16 +90,16 @@
         <button
           v-for="(option, i) in currentOptions"
           :key="i"
-          @click="selectOption(option)"
+          @click="selectOption(option.char)"
           class="option-btn"
           :class="{
-            correct: answered && option === correctAnswer,
-            wrong: answered && option === selectedAnswer && option !== correctAnswer,
-            selected: option === selectedAnswer && !answered
+            correct: answered && option.char === correctAnswer,
+            wrong: answered && option.char === selectedAnswer && option.char !== correctAnswer,
+            selected: option.char === selectedAnswer && !answered
           }"
           :disabled="answered"
         >
-          {{ option }}
+          {{ option.char }}
         </button>
       </div>
 
@@ -340,9 +340,13 @@ function prepareQuestion() {
 }
 
 function playAudio() {
-  if (!settings.voiceEnabled || !currentHanzi.value) return
+  if (!settings.voiceEnabled) return
 
-  const utterance = new SpeechSynthesisUtterance(currentHanzi.value.char)
+  // 在游戏模式下，播放正确答案的读音
+  const charToSpeak = correctAnswer.value || currentHanzi.value?.char
+  if (!charToSpeak) return
+
+  const utterance = new SpeechSynthesisUtterance(charToSpeak)
   utterance.lang = 'zh-CN'
   utterance.rate = settings.voiceSpeed
   speechSynthesis.speak(utterance)
