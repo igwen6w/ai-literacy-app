@@ -11,7 +11,7 @@
         </button>
 
         <h1 class="page-title">识字卡片</h1>
-        <p class="page-subtitle">每组10个字，点击卡片翻转学习</p>
+        <p class="page-subtitle">滑动切换，点击翻转学习</p>
       </div>
 
       <svg class="wave-bottom" viewBox="0 0 1440 60" fill="none">
@@ -65,9 +65,10 @@
       </div>
     </div>
 
-    <!-- Cards grid -->
-    <main class="px-5 mt-5 pb-20">
-      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 max-w-5xl mx-auto">
+    <!-- Cards carousel -->
+    <main class="mt-5 pb-20">
+      <!-- 桌面端：网格布局 -->
+      <div class="hidden md:grid grid-cols-5 gap-3 px-5 max-w-5xl mx-auto">
         <HanziCard
           v-for="hanzi in currentGroupHanzi"
           :key="hanzi.char"
@@ -75,6 +76,51 @@
           @learned="onLearned"
           class="animate-fade-in"
         />
+      </div>
+
+      <!-- 手机端：单卡片滑动 -->
+      <div class="md:hidden">
+        <div
+          class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide px-5 gap-4"
+          style="-webkit-overflow-scrolling: touch;"
+          @touchstart="handleTouchStart"
+          @touchmove="handleTouchMove"
+          @touchend="handleTouchEnd"
+          ref="scrollContainer"
+        >
+          <div
+            v-for="(hanzi, index) in currentGroupHanzi"
+            :key="hanzi.char"
+            class="snap-center shrink-0 w-[calc(100vw-40px)] max-w-[300px] mx-auto"
+          >
+            <HanziCard
+              :hanzi="hanzi"
+              @learned="onLearned"
+            />
+          </div>
+        </div>
+
+        <!-- 滑动提示 -->
+        <div class="flex justify-center items-center gap-2 mt-4 text-gray-400">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/>
+          </svg>
+          <span class="text-xs">左右滑动切换</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"/>
+          </svg>
+        </div>
+
+        <!-- 当前卡片位置 -->
+        <div class="flex justify-center gap-1.5 mt-3">
+          <button
+            v-for="(_, index) in currentGroupHanzi"
+            :key="index"
+            @click="goToCard(index)"
+            class="w-2 h-2 rounded-full transition-all"
+            :class="currentCard === index ? 'bg-module-cards w-4' : 'bg-gray-300'"
+          ></button>
+        </div>
       </div>
     </main>
 
@@ -89,7 +135,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useProgressStore } from '@/stores/progress'
 import HanziCard from '@/components/HanziCard.vue'
@@ -99,7 +145,13 @@ const router = useRouter()
 const progress = useProgressStore()
 
 const currentGroup = ref(0)
+const currentCard = ref(0)
 const learnedInSession = ref(new Set())
+const scrollContainer = ref(null)
+
+// 触摸相关变量
+let touchStartX = 0
+let touchStartY = 0
 
 const totalGroups = computed(() => getTotalGroups())
 const totalHanzi = computed(() => getAllHanzi().length)
@@ -119,6 +171,7 @@ const progressPercentage = computed(() => {
 const prevGroup = () => {
   if (currentGroup.value > 0) {
     currentGroup.value--
+    currentCard.value = 0
     learnedInSession.value.clear()
   }
 }
@@ -126,13 +179,25 @@ const prevGroup = () => {
 const nextGroup = () => {
   if (currentGroup.value < totalGroups.value - 1) {
     currentGroup.value++
+    currentCard.value = 0
     learnedInSession.value.clear()
   }
 }
 
 const goToGroup = (index) => {
   currentGroup.value = index
+  currentCard.value = 0
   learnedInSession.value.clear()
+}
+
+const goToCard = (index) => {
+  currentCard.value = index
+  if (scrollContainer.value) {
+    const cards = scrollContainer.value.children
+    if (cards[index]) {
+      cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center' })
+    }
+  }
 }
 
 const onLearned = (char) => {
@@ -142,8 +207,67 @@ const onLearned = (char) => {
 
 const goBack = () => router.push('/')
 
-// 恢复之前的学习进度
+// 触摸事件处理
+const handleTouchStart = (e) => {
+  touchStartX = e.touches[0].clientX
+  touchStartY = e.touches[0].clientY
+}
+
+const handleTouchMove = (e) => {
+  // 不阻止默认行为，让滚动正常进行
+}
+
+const handleTouchEnd = (e) => {
+  const touchEndX = e.changedTouches[0].clientX
+  const touchEndY = e.changedTouches[0].clientY
+  const diffX = touchEndX - touchStartX
+  const diffY = touchEndY - touchStartY
+
+  // 判断是否为水平滑动（水平距离大于垂直距离）
+  if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+    if (diffX > 0) {
+      // 向右滑 - 上一张
+      if (currentCard.value > 0) {
+        goToCard(currentCard.value - 1)
+      }
+    } else {
+      // 向左滑 - 下一张
+      if (currentCard.value < currentGroupHanzi.value.length - 1) {
+        goToCard(currentCard.value + 1)
+      }
+    }
+  }
+}
+
 onMounted(() => {
-  // 可以在这里添加恢复逻辑
+  // 监听滚动事件更新当前位置
+  if (scrollContainer.value) {
+    scrollContainer.value.addEventListener('scroll', updateCurrentCard)
+  }
 })
+
+onUnmounted(() => {
+  if (scrollContainer.value) {
+    scrollContainer.value.removeEventListener('scroll', updateCurrentCard)
+  }
+})
+
+const updateCurrentCard = () => {
+  if (scrollContainer.value) {
+    const scrollLeft = scrollContainer.value.scrollLeft
+    const cardWidth = scrollContainer.value.clientWidth
+    currentCard.value = Math.round(scrollLeft / cardWidth)
+  }
+}
 </script>
+
+<style scoped>
+/* 隐藏滚动条但保持滚动功能 */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+</style>
