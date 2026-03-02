@@ -81,17 +81,14 @@
       <!-- 手机端：单卡片滑动 -->
       <div class="md:hidden">
         <div
-          class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide px-5 gap-4"
+          class="flex overflow-x-auto scrollbar-hide px-5 gap-4"
           style="-webkit-overflow-scrolling: touch;"
-          @touchstart="handleTouchStart"
-          @touchmove="handleTouchMove"
-          @touchend="handleTouchEnd"
           ref="scrollContainer"
         >
           <div
             v-for="(hanzi, index) in currentGroupHanzi"
             :key="hanzi.char"
-            class="snap-center shrink-0 w-[calc(100vw-40px)] max-w-[300px] mx-auto"
+            class="shrink-0 w-[calc(100vw-40px)] max-w-[300px] mx-auto"
           >
             <HanziCard
               :hanzi="hanzi"
@@ -149,10 +146,6 @@ const currentCard = ref(0)
 const learnedInSession = ref(new Set())
 const scrollContainer = ref(null)
 
-// 触摸相关变量
-let touchStartX = 0
-let touchStartY = 0
-
 const totalGroups = computed(() => getTotalGroups())
 const totalHanzi = computed(() => getAllHanzi().length)
 const currentGroupHanzi = computed(() => getHanziByGroup(currentGroup.value))
@@ -206,38 +199,6 @@ const onLearned = (char) => {
 }
 
 const goBack = () => router.push('/')
-
-// 触摸事件处理
-const handleTouchStart = (e) => {
-  touchStartX = e.touches[0].clientX
-  touchStartY = e.touches[0].clientY
-}
-
-const handleTouchMove = (e) => {
-  // 不阻止默认行为，让滚动正常进行
-}
-
-const handleTouchEnd = (e) => {
-  const touchEndX = e.changedTouches[0].clientX
-  const touchEndY = e.changedTouches[0].clientY
-  const diffX = touchEndX - touchStartX
-  const diffY = touchEndY - touchStartY
-
-  // 判断是否为水平滑动（水平距离大于垂直距离）
-  if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
-    if (diffX > 0) {
-      // 向右滑 - 上一张
-      if (currentCard.value > 0) {
-        goToCard(currentCard.value - 1)
-      }
-    } else {
-      // 向左滑 - 下一张
-      if (currentCard.value < currentGroupHanzi.value.length - 1) {
-        goToCard(currentCard.value + 1)
-      }
-    }
-  }
-}
 
 onMounted(() => {
   // 监听滚动事件更新当前位置
