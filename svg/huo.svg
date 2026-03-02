@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="fireGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF4500"/>
+      <stop offset="50%" style="stop-color:#FF6B6B"/>
+      <stop offset="100%" style="stop-color:#FFD700"/>
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect width="1024" height="1024" rx="80" fill="#FFF5EE"/>
+  </g>
+  <g id="shadow">
+    <ellipse cx="512" cy="920" rx="280" ry="40" fill="#00000020"/>
+  </g>
+  <g id="main-object">
+    <!-- 火焰主体 -->
+    <path d="M512 150 Q350 300 300 500 Q250 700 380 800 Q450 850 512 850 Q574 850 644 800 Q774 700 724 500 Q674 300 512 150 Z" fill="url(#fireGrad)"/>
+    <path d="M512 200 Q380 320 340 480 Q300 650 400 750 Q450 800 512 800 Q574 800 624 750 Q724 650 684 480 Q644 320 512 200 Z" fill="#FFA500"/>
+    <path d="M512 280 Q420 380 390 500 Q360 640 440 720 Q480 760 512 760 Q544 760 584 720 Q664 640 634 500 Q604 380 512 280 Z" fill="#FFD700"/>
+    <!-- 内层火焰 -->
+    <path d="M512 350 Q450 420 430 520 Q410 620 470 680 Q500 710 512 710 Q524 710 554 680 Q614 620 594 520 Q574 420 512 350 Z" fill="#FFF8DC"/>
+    <!-- 火苗尖端 -->
+    <path d="M512 180 Q480 250 460 320 Q440 380 470 400 Q490 410 512 400 Q534 410 554 400 Q584 380 564 320 Q544 250 512 180 Z" fill="#FFFF00" opacity="0.8"/>
+  </g>
+  <g id="expression">
+    <!-- 火焰开心表情 -->
+    <circle cx="460" cy="550" r="16" fill="#FFFFFF"/>
+    <circle cx="564" cy="550" r="16" fill="#FFFFFF"/>
+    <circle cx="460" cy="550" r="8" fill="#FF4500"/>
+    <circle cx="564" cy="550" r="8" fill="#FF4500"/>
+    <path d="M470 590 Q512 630 554 590" stroke="#FF4500" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <!-- 脸颊 -->
+    <circle cx="400" cy="570" r="20" fill="#FFB6C1" opacity="0.7"/>
+    <circle cx="624" cy="570" r="20" fill="#FFB6C1" opacity="0.7"/>
+  </g>
+  <g id="accent">
+    <!-- 火星 -->
+    <g fill="#FFD700">
+      <circle cx="280" cy="600" r="10"/>
+      <circle cx="744" cy="580" r="8"/>
+      <circle cx="320" cy="700" r="6"/>
+      <circle cx="704" cy="720" r="7"/>
+      <circle cx="360" cy="500" r="5"/>
+      <circle cx="664" cy="480" r="6"/>
+    </g>
+    <!-- 火焰光芒 -->
+    <g stroke="#FF6B6B" stroke-width="3" opacity="0.5">
+      <line x1="512" y1="100" x2="512" y2="60"/>
+      <line x1="380" y1="150" x2="350" y2="120"/>
+      <line x1="644" y1="150" x2="674" y2="120"/>
+    </g>
+  </g>
+</svg>

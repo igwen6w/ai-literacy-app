@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#32CD32"/>
+      <stop offset="100%" style="stop-color:#228B22"/>
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect width="1024" height="1024" rx="80" fill="#F0FFF0"/>
+  </g>
+  <g id="shadow">
+    <ellipse cx="512" cy="900" rx="320" ry="45" fill="#00000015"/>
+  </g>
+  <g id="main-object">
+    <!-- 叶子主体 -->
+    <path d="M512 150 Q250 300 250 500 Q250 750 512 850 Q774 750 774 500 Q774 300 512 150 Z" fill="url(#leafGrad)"/>
+    <path d="M512 180 Q280 320 280 500 Q280 720 512 810 Q744 720 744 500 Q744 320 512 180 Z" fill="#32CD32"/>
+    <!-- 叶脉 -->
+    <path d="M512 200 Q500 400 512 780" stroke="#228B22" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M512 350 Q400 320 320 350" stroke="#228B22" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M512 350 Q624 320 704 350" stroke="#228B22" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M512 500 Q420 470 350 500" stroke="#228B22" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M512 500 Q604 470 674 500" stroke="#228B22" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M512 650 Q440 620 380 650" stroke="#228B22" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M512 650 Q584 620 644 650" stroke="#228B22" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <!-- 叶子边缘 -->
+    <path d="M280 500 Q290 450 320 420" stroke="#90EE90" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M744 500 Q734 450 704 420" stroke="#90EE90" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="expression">
+    <!-- 叶子可爱表情 -->
+    <circle cx="460" cy="500" r="18" fill="#FFFFFF"/>
+    <circle cx="564" cy="500" r="18" fill="#FFFFFF"/>
+    <circle cx="460" cy="500" r="9" fill="#228B22"/>
+    <circle cx="564" cy="500" r="9" fill="#228B22"/>
+    <circle cx="463" cy="497" r="3" fill="#FFFFFF"/>
+    <circle cx="567" cy="497" r="3" fill="#FFFFFF"/>
+    <path d="M470 540 Q512 580 554 540" stroke="#228B22" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <!-- 脸颊 -->
+    <circle cx="400" cy="530" r="18" fill="#FFB6C1" opacity="0.5"/>
+    <circle cx="624" cy="530" r="18" fill="#FFB6C1" opacity="0.5"/>
+  </g>
+  <g id="accent">
+    <!-- 露珠 -->
+    <g fill="#E0FFFF">
+      <circle cx="350" cy="400" r="15"/>
+      <circle cx="680" cy="450" r="12"/>
+      <circle cx="400" cy="600" r="10"/>
+      <circle cx="620" cy="350" r="8"/>
+    </g>
+    <g fill="#FFFFFF" opacity="0.7">
+      <circle cx="345" cy="395" r="5"/>
+      <circle cx="675" cy="445" r="4"/>
+    </g>
+    <!-- 小瓢虫 -->
+    <g transform="translate(650, 650)">
+      <circle cx="0" cy="0" r="20" fill="#FF0000"/>
+      <circle cx="0" cy="0" r="15" fill="#FF4444"/>
+      <line x1="0" y1="-20" x2="0" y2="20" stroke="#000000" stroke-width="2"/>
+      <circle cx="-10" cy="-5" r="4" fill="#FFFFFF"/>
+      <circle cx="10" cy="-5" r="4" fill="#FFFFFF"/>
+      <circle cx="0" cy="18" r="3" fill="#000000"/>
+    </g>
+    <!-- 蚂蚁 -->
+    <g transform="translate(300, 780)">
+      <circle cx="0" cy="0" r="8" fill="#8B4513"/>
+      <circle cx="15" cy="-5" r="6" fill="#8B4513"/>
+      <circle cx="30" cy="0" r="7" fill="#8B4513"/>
+      <circle cx="45" cy="-3" r="5" fill="#8B4513"/>
+      <line x1="8" y1="5" x2="8" y2="15" stroke="#8B4513" stroke-width="2"/>
+      <line x1="22" y1="3" x2="22" y2="13" stroke="#8B4513" stroke-width="2"/>
+      <line x1="38" y1="2" x2="38" y2="12" stroke="#8B4513" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

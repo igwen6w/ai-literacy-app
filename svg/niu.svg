@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <radialGradient id="cowGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FFFFFF"/>
+      <stop offset="100%" style="stop-color:#F5F5F5"/>
+    </radialGradient>
+  </defs>
+  <g id="background">
+    <rect width="1024" height="1024" rx="80" fill="#F0FFF0"/>
+  </g>
+  <g id="shadow">
+    <ellipse cx="512" cy="920" rx="380" ry="45" fill="#00000015"/>
+  </g>
+  <g id="main-object">
+    <!-- 牛身体 -->
+    <ellipse cx="512" cy="550" rx="280" ry="200" fill="url(#cowGrad)"/>
+    <ellipse cx="512" cy="560" rx="250" ry="170" fill="#FFFFFF"/>
+    <!-- 黑白花纹 -->
+    <ellipse cx="400" cy="480" rx="50" ry="40" fill="#000000"/>
+    <ellipse cx="620" cy="520" rx="45" ry="35" fill="#000000"/>
+    <ellipse cx="350" cy="580" rx="40" ry="30" fill="#000000"/>
+    <ellipse cx="550" cy="650" rx="55" ry="35" fill="#000000"/>
+    <ellipse cx="480" cy="420" rx="35" ry="25" fill="#000000"/>
+    <!-- 牛头 -->
+    <ellipse cx="512" cy="300" rx="150" ry="130" fill="#FFFFFF"/>
+    <!-- 牛角 -->
+    <path d="M400 200 Q350 120 400 80 Q420 120 430 200 Z" fill="#F5DEB3"/>
+    <path d="M624 200 Q674 120 624 80 Q604 120 594 200 Z" fill="#F5DEB3"/>
+    <!-- 耳朵 -->
+    <ellipse cx="320" cy="250" rx="30" ry="45" fill="#F5DEB3" transform="rotate(-30 320 250)"/>
+    <ellipse cx="704" cy="250" rx="30" ry="45" fill="#F5DEB3" transform="rotate(30 704 250)"/>
+    <!-- 眼睛 -->
+    <circle cx="450" cy="280" r="25" fill="#FFFFFF"/>
+    <circle cx="450" cy="280" r="18" fill="#000000"/>
+    <circle cx="450" cy="280" r="7" fill="#FFFFFF"/>
+    <circle cx="574" cy="280" r="25" fill="#FFFFFF"/>
+    <circle cx="574" cy="280" r="18" fill="#000000"/>
+    <circle cx="574" cy="280" r="7" fill="#FFFFFF"/>
+    <!-- 鼻子 -->
+    <ellipse cx="512" cy="360" rx="60" ry="40" fill="#FFB6C1"/>
+    <!-- 鼻孔 -->
+    <circle cx="490" cy="355" r="12" fill="#8B4513"/>
+    <circle cx="534" cy="355" r="12" fill="#8B4513"/>
+    <!-- 嘴巴 -->
+    <path d="M485 390 Q512 415 539 390" stroke="#8B4513" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <!-- 腿 -->
+    <g fill="#FFFFFF" stroke="#E0E0E0" stroke-width="2">
+      <rect x="320" y="700" width="50" height="150" rx="20"/>
+      <rect x="420" y="720" width="50" height="140" rx="20"/>
+      <rect x="554" y="720" width="50" height="140" rx="20"/>
+      <rect x="654" y="700" width="50" height="150" rx="20"/>
+    </g>
+    <!-- 蹄子 -->
+    <ellipse cx="345" cy="850" rx="25" ry="15" fill="#8B4513"/>
+    <ellipse cx="445" cy="860" rx="25" ry="15" fill="#8B4513"/>
+    <ellipse cx="579" cy="860" rx="25" ry="15" fill="#8B4513"/>
+    <ellipse cx="679" cy="850" rx="25" ry="15" fill="#8B4513"/>
+    <!-- 尾巴 -->
+    <path d="M260 550 Q180 600 200 720" stroke="#FFFFFF" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <circle cx="200" cy="720" r="15" fill="#000000"/>
+  </g>
+  <g id="expression">
+    <!-- 微笑 -->
+    <path d="M490 350 Q512 370 534 350" stroke="#8B4513" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <!-- 脸颊 -->
+    <circle cx="400" cy="320" r="20" fill="#FFB6C1" opacity="0.5"/>
+    <circle cx="624" cy="320" r="20" fill="#FFB6C1" opacity="0.5"/>
+  </g>
+  <g id="accent">
+    <!-- 草地 -->
+    <path d="M0 870 Q256 840 512 870 Q768 900 1024 870 L1024 1024 L0 1024 Z" fill="#90EE90"/>
+    <!-- 太阳 -->
+    <circle cx="150" cy="150" r="50" fill="#FFD700"/>
+    <circle cx="150" cy="150" r="35" fill="#FFEC8B"/>
+    <!-- 云朵 -->
+    <g fill="#FFFFFF">
+      <ellipse cx="800" cy="180" rx="70" ry="45"/>
+      <ellipse cx="850" cy="165" rx="55" ry="38"/>
+    </g>
+    <!-- 蝴蝶 -->
+    <g transform="translate(700, 400)">
+      <ellipse cx="-25" cy="0" rx="22" ry="16" fill="#9370DB" transform="rotate(-30)"/>
+      <ellipse cx="25" cy="0" rx="22" ry="16" fill="#9370DB" transform="rotate(30)"/>
+      <ellipse cx="-18" cy="5" rx="13" ry="8" fill="#FFFFFF" transform="rotate(-30)"/>
+      <ellipse cx="18" cy="5" rx="13" ry="8" fill="#FFFFFF" transform="rotate(30)"/>
+      <ellipse cx="0" cy="0" rx="4" ry="16" fill="#4B0082"/>
+    </g>
+  </g>
+</svg>

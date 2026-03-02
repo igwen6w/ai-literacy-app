@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <radialGradient id="catGrad" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#FFD700"/>
+      <stop offset="100%" style="stop-color:#FFA500"/>
+    </radialGradient>
+  </defs>
+  <g id="background">
+    <rect width="1024" height="1024" rx="80" fill="#FFF8E7"/>
+  </g>
+  <g id="shadow">
+    <ellipse cx="512" cy="920" rx="300" ry="40" fill="#00000015"/>
+  </g>
+  <g id="main-object">
+    <!-- 猫身体 -->
+    <ellipse cx="512" cy="580" rx="200" ry="180" fill="url(#catGrad)"/>
+    <ellipse cx="512" cy="590" rx="170" ry="150" fill="#FFD700"/>
+    <!-- 花纹 -->
+    <g fill="#FF8C00" opacity="0.6">
+      <circle cx="400" cy="520" r="25"/>
+      <circle cx="620" cy="540" r="22"/>
+      <circle cx="350" cy="600" r="20"/>
+      <circle cx="550" cy="680" r="25"/>
+      <circle cx="450" cy="450" r="18"/>
+      <circle cx="570" cy="470" r="20"/>
+    </g>
+    <!-- 猫头 -->
+    <circle cx="512" cy="320" r="130" fill="#FFD700"/>
+    <circle cx="512" cy="320" r="115" fill="#FFE4B5"/>
+    <!-- 猫耳朵 -->
+    <path d="M400 220 L380 120 L470 200 Z" fill="#FFD700"/>
+    <path d="M624 220 L644 120 L554 200 Z" fill="#FFD700"/>
+    <path d="M405 215 L390 140 L455 200 Z" fill="#FFB6C1"/>
+    <path d="M619 215 L634 140 L569 200 Z" fill="#FFB6C1"/>
+    <!-- 眼睛 -->
+    <ellipse cx="460" cy="300" rx="30" ry="35" fill="#FFFFFF"/>
+    <ellipse cx="564" cy="300" rx="30" ry="35" fill="#FFFFFF"/>
+    <ellipse cx="460" cy="300" rx="20" ry="28" fill="#228B22"/>
+    <ellipse cx="564" cy="300" rx="20" ry="28" fill="#228B22"/>
+    <ellipse cx="460" cy="300" rx="10" ry="20" fill="#000000"/>
+    <ellipse cx="564" cy="300" rx="10" ry="20" fill="#000000"/>
+    <circle cx="455" cy="290" r="6" fill="#FFFFFF"/>
+    <circle cx="559" cy="290" r="6" fill="#FFFFFF"/>
+    <!-- 鼻子 -->
+    <polygon points="512,340 500,355 524,355" fill="#FF69B4"/>
+    <!-- 嘴巴 -->
+    <path d="M512 355 L500 375 L512 370 L524 375 Z" fill="#FF69B4"/>
+    <path d="M500 375 Q512 395 524 375" stroke="#FF69B4" stroke-width="3" fill="none"/>
+    <!-- 胡须 -->
+    <g stroke="#FFA500" stroke-width="2" stroke-linecap="round">
+      <line x1="400" y1="350" x2="320" y2="340"/>
+      <line x1="400" y1="365" x2="310" y2="365"/>
+      <line x1="400" y1="380" x2="320" y2="390"/>
+      <line x1="624" y1="350" x2="704" y2="340"/>
+      <line x1="624" y1="365" x2="714" y2="365"/>
+      <line x1="624" y1="380" x2="704" y2="390"/>
+    </g>
+    <!-- 腿 -->
+    <g fill="#FFD700">
+      <ellipse cx="380" cy="720" rx="40" ry="50"/>
+      <ellipse cx="470" cy="740" rx="35" ry="45"/>
+      <ellipse cx="554" cy="740" rx="35" ry="45"/>
+      <ellipse cx="644" cy="720" rx="40" ry="50"/>
+    </g>
+    <!-- 爪子 -->
+    <g fill="#FFB6C1">
+      <ellipse cx="380" cy="765" rx="30" ry="15"/>
+      <ellipse cx="470" cy="780" rx="25" ry="12"/>
+      <ellipse cx="554" cy="780" rx="25" ry="12"/>
+      <ellipse cx="644" cy="765" rx="30" ry="15"/>
+    </g>
+    <!-- 尾巴 -->
+    <path d="M300 580 Q200 550 220 450 Q240 400 280 420" stroke="#FFD700" stroke-width="35" fill="none" stroke-linecap="round"/>
+    <path d="M300 580 Q210 560 225 470" stroke="#FFA500" stroke-width="25" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="expression">
+    <!-- 开心 -->
+    <path d="M490 400 Q512 420 534 400" stroke="#FF69B4" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <!-- 脸颊 -->
+    <circle cx="410" cy="370" r="20" fill="#FFB6C1" opacity="0.6"/>
+    <circle cx="614" cy="370" r="20" fill="#FFB6C1" opacity="0.6"/>
+  </g>
+  <g id="accent">
+    <!-- 毛线球 -->
+    <g transform="translate(180, 780)">
+      <circle cx="0" cy="0" r="50" fill="#FF6B6B"/>
+      <path d="M-30 -40 Q0 -50 30 -40" stroke="#FFB6C1" stroke-width="5" fill="none"/>
+      <path d="M-45 -20 Q-50 0 -45 20" stroke="#FFB6C1" stroke-width="5" fill="none"/>
+      <path d="M45 -20 Q50 0 45 20" stroke="#FFB6C1" stroke-width="5" fill="none"/>
+    </g>
+    <!-- 鱼干 -->
+    <g transform="translate(800, 800)">
+      <ellipse cx="0" cy="0" rx="40" ry="15" fill="#FFA500"/>
+      <path d="M-40 0 L-50 -10" stroke="#8B4513" stroke-width="3"/>
+      <path d="M40 0 L50 -10" stroke="#8B4513" stroke-width="3"/>
+      <line x1="-20" y1="-5" x2="-20" y2="5" stroke="#FF8C00" stroke-width="2"/>
+      <line x1="0" y1="-5" x2="0" y2="5" stroke="#FF8C00" stroke-width="2"/>
+      <line x1="20" y1="-5" x2="20" y2="5" stroke="#FF8C00" stroke-width="2"/>
+    </g>
+    <!-- 草地 -->
+    <path d="M0 850 Q256 820 512 850 Q768 880 1024 850 L1024 1024 L0 1024 Z" fill="#90EE90"/>
+  </g>
+</svg>

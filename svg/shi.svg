@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="stoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A9A9A9"/>
+      <stop offset="100%" style="stop-color:#696969"/>
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect width="1024" height="1024" rx="80" fill="#F5F5DC"/>
+  </g>
+  <g id="shadow">
+    <ellipse cx="512" cy="880" rx="320" ry="45" fill="#00000025"/>
+  </g>
+  <g id="main-object">
+    <!-- 大石头 -->
+    <path d="M280 700 Q200 600 250 500 Q300 350 450 320 Q550 300 650 350 Q800 400 820 550 Q840 700 750 780 Q650 850 450 840 Q300 830 280 700 Z" fill="url(#stoneGrad)"/>
+    <path d="M300 680 Q240 590 280 500 Q320 370 450 350 Q540 335 620 380 Q750 420 770 550 Q790 680 710 750 Q620 810 450 800 Q330 790 300 680 Z" fill="#A9A9A9"/>
+    <path d="M330 660 Q280 580 315 500 Q350 390 450 370 Q530 358 600 400 Q710 435 730 550 Q745 660 675 720 Q590 775 450 765 Q350 755 330 660 Z" fill="#BEBEBE"/>
+    <!-- 石头纹理 -->
+    <g stroke="#808080" stroke-width="3" fill="none" opacity="0.4">
+      <path d="M350 450 Q400 480 380 530"/>
+      <path d="M500 400 Q550 450 530 520"/>
+      <path d="M600 450 Q650 480 620 530"/>
+      <path d="M400 600 Q450 630 430 680"/>
+    </g>
+  </g>
+  <g id="expression">
+    <!-- 石头可爱表情 -->
+    <circle cx="430" cy="520" r="18" fill="#4A4A4A"/>
+    <circle cx="590" cy="510" r="18" fill="#4A4A4A"/>
+    <circle cx="430" cy="520" r="8" fill="#FFFFFF"/>
+    <circle cx="590" cy="510" r="8" fill="#FFFFFF"/>
+    <ellipse cx="510" cy="580" rx="40" ry="20" fill="#4A4A4A"/>
+    <!-- 脸颊 -->
+    <circle cx="380" cy="540" r="15" fill="#FFB6C1" opacity="0.5"/>
+    <circle cx="640" cy="530" r="15" fill="#FFB6C1" opacity="0.5"/>
+  </g>
+  <g id="accent">
+    <!-- 小石头 -->
+    <path d="M150 800 Q120 750 150 720 Q180 690 220 710 Q260 730 250 770 Q240 810 200 820 Q160 830 150 800 Z" fill="#808080"/>
+    <path d="M780 780 Q750 730 780 700 Q810 670 850 690 Q890 710 880 750 Q870 790 830 800 Q790 810 780 780 Z" fill="#808080"/>
+    <path d="M650 850 Q620 810 650 780 Q680 750 710 765 Q740 780 735 815 Q730 850 700 855 Q665 860 650 850 Z" fill="#A9A9A9"/>
+    <!-- 小草 -->
+    <g fill="#32CD32">
+      <path d="M120 730 Q125 700 130 730 Q135 700 140 730"/>
+      <path d="M240 720 Q248 685 256 720 Q264 685 272 720"/>
+      <path d="M820 700 Q828 665 836 700 Q844 665 852 700"/>
+    </g>
+    <!-- 小花 -->
+    <g transform="translate(260, 710)">
+      <circle cx="0" cy="0" r="10" fill="#FFB6C1"/>
+      <circle cx="0" cy="0" r="5" fill="#FFD700"/>
+    </g>
+    <g transform="translate(840, 680)">
+      <circle cx="0" cy="0" r="8" fill="#DDA0DD"/>
+      <circle cx="0" cy="0" r="4" fill="#FFD700"/>
+    </g>
+  </g>
+</svg>

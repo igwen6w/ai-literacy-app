@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="nightGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#191970"/>
+      <stop offset="100%" style="stop-color:#483D8B"/>
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect width="1024" height="1024" rx="80" fill="url(#nightGrad)"/>
+  </g>
+  <g id="shadow">
+    <ellipse cx="512" cy="900" rx="300" ry="40" fill="#00000030"/>
+  </g>
+  <g id="main-object">
+    <!-- 月亮 -->
+    <path d="M600 200 C350 200 250 400 250 550 C250 700 380 900 600 900 C700 900 780 850 820 780 C720 820 620 820 520 780 C450 740 400 680 400 550 C400 420 480 300 600 200 Z" fill="#F5F5DC"/>
+    <path d="M580 220 C360 220 270 390 270 530 C270 670 390 860 580 860 C670 860 740 815 775 755 C685 790 595 790 505 755 C445 720 400 665 400 530 C400 415 470 305 580 220 Z" fill="#FFFACD"/>
+    <!-- 月亮脸部 -->
+    <circle cx="450" cy="500" r="20" fill="#D2B48C"/>
+    <circle cx="550" cy="490" r="18" fill="#D2B48C"/>
+    <ellipse cx="500" cy="560" rx="50" ry="30" fill="#FFE4B5"/>
+  </g>
+  <g id="expression">
+    <!-- 睡眼表情 -->
+    <path d="M420 490 Q440 510 460 490" stroke="#8B7355" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M520 480 Q540 500 560 480" stroke="#8B7355" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M470 600 Q500 620 530 600" stroke="#8B7355" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="accent">
+    <!-- 星星 -->
+    <g fill="#FFD700">
+      <polygon points="150,150 160,180 190,180 165,200 175,230 150,210 125,230 135,200 110,180 140,180"/>
+      <polygon points="850,200 858,222 880,222 862,236 870,258 850,244 830,258 838,236 820,222 842,222"/>
+      <polygon points="200,400 206,416 222,416 209,426 214,442 200,432 186,442 191,426 178,416 194,416"/>
+      <polygon points="750,350 755,362 767,362 757,370 761,382 750,374 739,382 743,370 733,362 745,362"/>
+      <circle cx="300" cy="250" r="8"/>
+      <circle cx="700" cy="280" r="6"/>
+      <circle cx="400" cy="150" r="5"/>
+    </g>
+    <!-- 云朵遮月 -->
+    <g fill="#E6E6FA" opacity="0.5">
+      <ellipse cx="700" cy="300" rx="80" ry="40"/>
+      <ellipse cx="760" cy="290" rx="60" ry="35"/>
+    </g>
+  </g>
+</svg>

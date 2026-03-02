@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB"/>
+      <stop offset="100%" style="stop-color:#4169E1"/>
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect width="1024" height="1024" rx="80" fill="#E0F7FA"/>
+  </g>
+  <g id="shadow">
+    <ellipse cx="512" cy="920" rx="320" ry="40" fill="#00000015"/>
+  </g>
+  <g id="main-object">
+    <!-- 大水滴 -->
+    <path d="M512 150 C350 150 280 350 280 500 C280 700 380 850 512 850 C644 850 744 700 744 500 C744 350 674 150 512 150 Z" fill="url(#waterGrad)"/>
+    <path d="M512 180 C370 180 310 360 310 490 C310 660 400 800 512 800 C624 800 714 660 714 490 C714 360 654 180 512 180 Z" fill="#B0E0E6"/>
+    <!-- 高光 -->
+    <ellipse cx="420" cy="350" rx="40" ry="60" fill="#FFFFFF" opacity="0.6"/>
+    <circle cx="380" cy="280" r="20" fill="#FFFFFF" opacity="0.4"/>
+    <!-- 小水滴 -->
+    <path d="M180 550 C140 550 120 600 120 650 C120 720 150 780 180 780 C210 780 240 720 240 650 C240 600 220 550 180 550 Z" fill="#87CEEB"/>
+    <path d="M180 570 C150 570 135 610 135 650 C135 700 155 750 180 750 C205 750 225 700 225 650 C225 610 210 570 180 570 Z" fill="#B0E0E6"/>
+    <path d="M844 600 C804 600 784 650 784 700 C784 770 814 830 844 830 C874 830 904 770 904 700 C904 650 884 600 844 600 Z" fill="#87CEEB"/>
+    <path d="M844 620 C814 620 799 660 799 700 C799 750 819 800 844 800 C869 800 889 750 889 700 C889 660 874 620 844 620 Z" fill="#B0E0E6"/>
+    <!-- 水波纹 -->
+    <ellipse cx="512" cy="880" rx="280" ry="40" fill="#4169E1" opacity="0.5"/>
+    <ellipse cx="512" cy="850" rx="220" ry="30" fill="#6495ED" opacity="0.5"/>
+  </g>
+  <g id="expression">
+    <!-- 开心表情 -->
+    <circle cx="460" cy="480" r="18" fill="#FFFFFF"/>
+    <circle cx="564" cy="480" r="18" fill="#FFFFFF"/>
+    <circle cx="460" cy="480" r="10" fill="#4169E1"/>
+    <circle cx="564" cy="480" r="10" fill="#4169E1"/>
+    <circle cx="464" cy="476" r="4" fill="#FFFFFF"/>
+    <circle cx="568" cy="476" r="4" fill="#FFFFFF"/>
+    <path d="M470 530 Q512 570 554 530" stroke="#FFFFFF" stroke-width="6" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="accent">
+    <!-- 水花 -->
+    <g fill="#B0E0E6">
+      <circle cx="300" cy="780" r="15"/>
+      <circle cx="340" cy="800" r="10"/>
+      <circle cx="320" cy="760" r="8"/>
+      <circle cx="700" cy="770" r="12"/>
+      <circle cx="740" cy="790" r="8"/>
+      <circle cx="720" cy="750" r="10"/>
+    </g>
+    <!-- 小气泡 -->
+    <circle cx="350" cy="400" r="8" fill="#FFFFFF" opacity="0.5"/>
+    <circle cx="650" cy="350" r="6" fill="#FFFFFF" opacity="0.5"/>
+    <circle cx="400" cy="600" r="5" fill="#FFFFFF" opacity="0.5"/>
+  </g>
+</svg>

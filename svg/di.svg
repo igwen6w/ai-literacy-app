@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="earthGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#90EE90"/>
+      <stop offset="60%" style="stop-color:#32CD32"/>
+      <stop offset="100%" style="stop-color:#228B22"/>
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect width="1024" height="1024" rx="80" fill="#F0FFF0"/>
+  </g>
+  <g id="shadow">
+    <ellipse cx="512" cy="880" rx="300" ry="40" fill="#00000020"/>
+  </g>
+  <g id="main-object">
+    <!-- 土地 -->
+    <ellipse cx="512" cy="600" rx="350" ry="250" fill="#8B4513"/>
+    <ellipse cx="512" cy="580" rx="320" ry="220" fill="#A0522D"/>
+    <ellipse cx="512" cy="560" rx="280" ry="180" fill="#CD853F"/>
+    <!-- 草地 -->
+    <path d="M160 450 Q200 350 240 450 Q280 350 320 450 Q360 350 400 450" fill="#90EE90" stroke="#32CD32" stroke-width="4"/>
+    <path d="M280 420 Q320 300 360 420 Q400 300 440 420" fill="#98FB98" stroke="#32CD32" stroke-width="4"/>
+    <path d="M400 400 Q440 280 480 400 Q520 280 560 400" fill="#90EE90" stroke="#32CD32" stroke-width="4"/>
+    <path d="M520 430 Q560 310 600 430 Q640 310 680 430" fill="#98FB98" stroke="#32CD32" stroke-width="4"/>
+    <path d="M640 450 Q680 350 720 450 Q760 350 800 450" fill="#90EE90" stroke="#32CD32" stroke-width="4"/>
+    <!-- 小花 -->
+    <g transform="translate(280, 380)">
+      <circle cx="0" cy="0" r="15" fill="#FFB6C1"/>
+      <circle cx="0" cy="0" r="8" fill="#FFD700"/>
+    </g>
+    <g transform="translate(560, 360)">
+      <circle cx="0" cy="0" r="12" fill="#DDA0DD"/>
+      <circle cx="0" cy="0" r="6" fill="#FFD700"/>
+    </g>
+    <g transform="translate(720, 390)">
+      <circle cx="0" cy="0" r="14" fill="#FFB6C1"/>
+      <circle cx="0" cy="0" r="7" fill="#FFD700"/>
+    </g>
+  </g>
+  <g id="expression">
+    <!-- 土地爷爷的笑容 -->
+    <circle cx="460" cy="540" r="15" fill="#5D4037"/>
+    <circle cx="564" cy="540" r="15" fill="#5D4037"/>
+    <path d="M470 570 Q512 610 554 570" stroke="#5D4037" stroke-width="6" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="accent">
+    <!-- 天空装饰 -->
+    <circle cx="150" cy="150" r="30" fill="#FFD700"/>
+    <circle cx="874" cy="120" r="20" fill="#FFB6C1"/>
+    <circle cx="800" cy="200" r="15" fill="#87CEEB"/>
+  </g>
+</svg>

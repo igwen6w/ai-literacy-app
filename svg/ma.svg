@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="horseGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#DEB887"/>
+      <stop offset="100%" style="stop-color:#D2691E"/>
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect width="1024" height="1024" rx="80" fill="#FFF8DC"/>
+  </g>
+  <g id="shadow">
+    <ellipse cx="512" cy="920" rx="350" ry="45" fill="#00000015"/>
+  </g>
+  <g id="main-object">
+    <!-- 马身体 -->
+    <ellipse cx="512" cy="550" rx="220" ry="180" fill="url(#horseGrad)"/>
+    <ellipse cx="512" cy="560" rx="190" ry="150" fill="#DEB887"/>
+    <!-- 马头 -->
+    <ellipse cx="512" cy="320" rx="120" ry="140" fill="#DEB887"/>
+    <ellipse cx="512" cy="330" rx="100" ry="115" fill="#F5DEB3"/>
+    <!-- 耳朵 -->
+    <path d="M440 210 L420 130 L470 200 Z" fill="#DEB887"/>
+    <path d="M584 210 L604 130 L554 200 Z" fill="#DEB887"/>
+    <path d="M445 200 L430 150 L465 195 Z" fill="#F5DEB3"/>
+    <path d="M579 200 L594 150 L559 195 Z" fill="#F5DEB3"/>
+    <!-- 鬃毛 -->
+    <g fill="#8B4513">
+      <path d="M430 220 Q400 280 420 350 Q440 320 450 260"/>
+      <path d="M460 210 Q420 280 440 380 Q470 330 480 260"/>
+      <path d="M512 200 Q512 280 512 400 Q520 330 520 260"/>
+      <path d="M564 210 Q604 280 584 380 Q554 330 544 260"/>
+      <path d="M590 220 Q620 280 604 350 Q580 320 570 260"/>
+    </g>
+    <!-- 眼睛 -->
+    <circle cx="470" cy="300" r="20" fill="#FFFFFF"/>
+    <circle cx="470" cy="300" r="14" fill="#4A4A4A"/>
+    <circle cx="470" cy="300" r="6" fill="#FFFFFF"/>
+    <circle cx="554" cy="300" r="20" fill="#FFFFFF"/>
+    <circle cx="554" cy="300" r="14" fill="#4A4A4A"/>
+    <circle cx="554" cy="300" r="6" fill="#FFFFFF"/>
+    <!-- 鼻子 -->
+    <ellipse cx="512" cy="380" rx="25" ry="15" fill="#D2691E"/>
+    <circle cx="505" cy="375" r="5" fill="#8B4513"/>
+    <circle cx="519" cy="375" r="5" fill="#8B4513"/>
+    <!-- 嘴巴 -->
+    <path d="M495 400 Q512 420 529 400" stroke="#8B4513" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <!-- 腿 -->
+    <g fill="#DEB887" stroke="#D2691E" stroke-width="3">
+      <path d="M350 700 L340 850 L370 850 L380 700"/>
+      <path d="M420 720 L415 860 L445 860 L450 720"/>
+      <path d="M574 720 L579 860 L609 860 L604 720"/>
+      <path d="M644 700 L654 850 L684 850 L674 700"/>
+    </g>
+    <!-- 马蹄 -->
+    <ellipse cx="355" cy="850" rx="20" ry="12" fill="#8B4513"/>
+    <ellipse cx="430" cy="860" rx="20" ry="12" fill="#8B4513"/>
+    <ellipse cx="594" cy="860" rx="20" ry="12" fill="#8B4513"/>
+    <ellipse cx="669" cy="850" rx="20" ry="12" fill="#8B4513"/>
+    <!-- 尾巴 -->
+    <path d="M290 550 Q200 600 220 700 Q240 650 250 580 Q230 620 250 680" stroke="#8B4513" stroke-width="15" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="expression">
+    <!-- 微笑 -->
+    <path d="M490 360 Q512 380 534 360" stroke="#8B4513" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <!-- 脸颊 -->
+    <circle cx="430" cy="350" r="18" fill="#FFB6C1" opacity="0.5"/>
+    <circle cx="594" cy="350" r="18" fill="#FFB6C1" opacity="0.5"/>
+  </g>
+  <g id="accent">
+    <!-- 草地 -->
+    <path d="M0 880 Q256 850 512 880 Q768 910 1024 880 L1024 1024 L0 1024 Z" fill="#90EE90"/>
+    <!-- 太阳 -->
+    <circle cx="150" cy="150" r="50" fill="#FFD700"/>
+    <circle cx="150" cy="150" r="35" fill="#FFEC8B"/>
+    <!-- 云朵 -->
+    <g fill="#FFFFFF">
+      <ellipse cx="800" cy="180" rx="70" ry="45"/>
+      <ellipse cx="850" cy="165" rx="55" ry="38"/>
+    </g>
+    <!-- 小花 -->
+    <g transform="translate(200, 890)">
+      <circle cx="0" cy="0" r="10" fill="#FFB6C1"/>
+      <circle cx="0" cy="0" r="5" fill="#FFD700"/>
+    </g>
+    <g transform="translate(824, 880)">
+      <circle cx="0" cy="0" r="8" fill="#DDA0DD"/>
+      <circle cx="0" cy="0" r="4" fill="#FFD700"/>
+    </g>
+  </g>
+</svg>

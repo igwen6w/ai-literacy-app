@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="riceGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#90EE90"/>
+      <stop offset="100%" style="stop-color:#228B22"/>
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect width="1024" height="1024" rx="80" fill="#F0FFF0"/>
+  </g>
+  <g id="shadow">
+    <ellipse cx="512" cy="920" rx="350" ry="40" fill="#00000015"/>
+  </g>
+  <g id="main-object">
+    <!-- 禾苗主茎 -->
+    <path d="M512 850 Q500 700 520 550 Q540 400 512 250" stroke="#32CD32" stroke-width="20" fill="none" stroke-linecap="round"/>
+    <path d="M512 850 Q508 700 515 550 Q522 400 512 250" stroke="#228B22" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <!-- 禾苗叶子 -->
+    <path d="M520 700 Q600 680 650 600 Q680 540 640 520 Q600 500 540 550 Q500 600 510 680" fill="#90EE90"/>
+    <path d="M505 650 Q420 630 370 550 Q340 490 380 470 Q420 450 480 500 Q520 550 510 630" fill="#90EE90"/>
+    <path d="M520 500 Q590 480 640 420 Q670 370 640 350 Q610 330 560 370 Q520 410 510 480" fill="#32CD32"/>
+    <path d="M505 450 Q430 430 380 370 Q350 320 380 300 Q410 280 460 320 Q500 360 495 430" fill="#32CD32"/>
+    <path d="M515 300 Q570 280 600 230 Q620 190 590 180 Q560 170 520 210 Q480 250 505 290" fill="#228B22"/>
+    <!-- 稻穗 -->
+    <g fill="#FFD700">
+      <ellipse cx="512" cy="220" rx="12" ry="35"/>
+      <ellipse cx="485" cy="235" rx="10" ry="30"/>
+      <ellipse cx="539" cy="235" rx="10" ry="30"/>
+      <ellipse cx="460" cy="255" rx="8" ry="25"/>
+      <ellipse cx="564" cy="255" rx="8" ry="25"/>
+    </g>
+  </g>
+  <g id="expression">
+    <!-- 禾苗开心表情 -->
+    <circle cx="490" cy="700" r="15" fill="#228B22"/>
+    <circle cx="534" cy="695" r="15" fill="#228B22"/>
+    <circle cx="490" cy="700" r="6" fill="#FFFFFF"/>
+    <circle cx="534" cy="695" r="6" fill="#FFFFFF"/>
+    <path d="M495 740 Q512 770 529 740" stroke="#228B22" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="accent">
+    <!-- 太阳 -->
+    <circle cx="150" cy="150" r="45" fill="#FFD700"/>
+    <circle cx="150" cy="150" r="30" fill="#FFEC8B"/>
+    <!-- 蝴蝶 -->
+    <g transform="translate(700, 350)">
+      <ellipse cx="-25" cy="0" rx="25" ry="18" fill="#FFB6C1" transform="rotate(-30)"/>
+      <ellipse cx="25" cy="0" rx="25" ry="18" fill="#FFB6C1" transform="rotate(30)"/>
+      <ellipse cx="-18" cy="5" rx="15" ry="10" fill="#FF69B4" transform="rotate(-30)"/>
+      <ellipse cx="18" cy="5" rx="15" ry="10" fill="#FF69B4" transform="rotate(30)"/>
+      <ellipse cx="0" cy="0" rx="5" ry="18" fill="#8B4513"/>
+    </g>
+    <!-- 云朵 -->
+    <g fill="#FFFFFF">
+      <ellipse cx="800" cy="180" rx="60" ry="40"/>
+      <ellipse cx="850" cy="165" rx="50" ry="35"/>
+    </g>
+    <!-- 草地 -->
+    <path d="M0 880 Q256 850 512 880 Q768 910 1024 880 L1024 1024 L0 1024 Z" fill="#90EE90"/>
+    <!-- 小蜻蜓 -->
+    <g transform="translate(250, 450)">
+      <ellipse cx="0" cy="0" rx="8" ry="20" fill="#87CEEB"/>
+      <ellipse cx="-30" cy="-10" rx="25" ry="15" fill="#B0E0E6" transform="rotate(-30)"/>
+      <ellipse cx="30" cy="-10" rx="25" ry="15" fill="#B0E0E6" transform="rotate(30)"/>
+      <ellipse cx="-30" cy="10" rx="25" ry="15" fill="#B0E0E6" transform="rotate(30)"/>
+      <ellipse cx="30" cy="10" rx="25" ry="15" fill="#B0E0E6" transform="rotate(-30)"/>
+    </g>
+  </g>
+</svg>

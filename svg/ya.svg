@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="duckGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700"/>
+      <stop offset="100%" style="stop-color:#FFA500"/>
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect width="1024" height="1024" rx="80" fill="#E0FFFF"/>
+  </g>
+  <g id="shadow">
+    <ellipse cx="512" cy="920" rx="350" ry="40" fill="#00000010"/>
+  </g>
+  <g id="main-object">
+    <!-- 鸭子身体 -->
+    <ellipse cx="512" cy="520" rx="220" ry="160" fill="url(#duckGrad)"/>
+    <ellipse cx="512" cy="530" rx="190" ry="135" fill="#FFD700"/>
+    <!-- 翅膀 -->
+    <path d="M350 500 Q280 460 310 540 Q360 590 400 550 Z" fill="#FFA500"/>
+    <path d="M360 510 Q300 480 320 540 Q360 580 390 550 Z" fill="#FFD700"/>
+    <!-- 头部 -->
+    <circle cx="512" cy="320" r="100" fill="#FFD700"/>
+    <circle cx="512" cy="330" r="85" fill="#FFEC8B"/>
+    <!-- 鸭嘴 -->
+    <path d="M560 350 Q650 340 680 370 Q650 390 560 380 Z" fill="#FF8C00"/>
+    <path d="M570 355 Q640 348 665 370 Q640 382 570 375 Z" fill="#FFA500"/>
+    <!-- 鼻孔 -->
+    <circle cx="600" cy="360" r="5" fill="#8B4513"/>
+    <circle cx="630" cy="365" r="5" fill="#8B4513"/>
+    <!-- 眼睛 -->
+    <circle cx="475" cy="300" r="22" fill="#000000"/>
+    <circle cx="475" cy="300" r="9" fill="#FFFFFF"/>
+    <!-- 眉毛 -->
+    <path d="M450 275 Q475 260 500 275" stroke="#8B4513" stroke-width="3" fill="none"/>
+    <!-- 腿 -->
+    <g stroke="#FF8C00" stroke-width="10" stroke-linecap="round">
+      <line x1="450" y1="670" x2="420" y2="800"/>
+      <line x1="450" y1="670" x2="440" y2="800"/>
+      <line x1="480" y1="670" x2="470" y2="800"/>
+      <line x1="570" y1="670" x2="600" y2="800"/>
+      <line x1="570" y1="670" x2="590" y2="800"/>
+      <line x1="600" y1="670" x2="620" y2="800"/>
+    </g>
+    <!-- 脚蹼 -->
+    <path d="M400 800 Q410 850 450 820 Q470 840 450 800 Z" fill="#FF8C00"/>
+    <path d="M580 800 Q590 850 630 820 Q650 840 630 800 Z" fill="#FF8C00"/>
+    <!-- 尾巴 -->
+    <path d="M300 520 Q220 500 250 450 Q280 480 300 470" stroke="#FFD700" stroke-width="30" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="expression">
+    <!-- 微笑 -->
+    <path d="M480 400 Q530 430 560 400" stroke="#8B4513" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <!-- 脸颊 -->
+    <circle cx="430" cy="340" r="18" fill="#FFB6C1" opacity="0.6"/>
+    <circle cx="540" cy="350" r="15" fill="#FFB6C1" opacity="0.5"/>
+  </g>
+  <g id="accent">
+    <!-- 水波 -->
+    <g stroke="#87CEEB" stroke-width="4" fill="none">
+      <path d="M100 880 Q200 870 300 880 Q400 890 500 880 Q600 870 700 880 Q800 890 924 880"/>
+      <path d="M150 920 Q250 910 350 920 Q450 930 550 920 Q650 910 750 920"/>
+    </g>
+    <!-- 荷叶 -->
+    <g transform="translate(150, 800)">
+      <path d="M0 -50 Q-60 0 0 50 Q60 0 0 -50" fill="#32CD32"/>
+      <path d="M0 50 L0 -50" stroke="#228B22" stroke-width="2"/>
+    </g>
+    <g transform="translate(850, 850)">
+      <path d="M0 -40 Q-50 0 0 40 Q50 0 0 -40" fill="#90EE90"/>
+      <path d="M0 40 L0 -40" stroke="#32CD32" stroke-width="2"/>
+    </g>
+    <!-- 小鱼 -->
+    <g transform="translate(400, 900)">
+      <ellipse cx="0" cy="0" rx="25" ry="15" fill="#FF6B6B"/>
+      <circle cx="-12" cy="0" r="8" fill="#FFFFFF"/>
+      <circle cx="-12" cy="0" r="5" fill="#000000"/>
+    </g>
+    <!-- 蜻蜓 -->
+    <g transform="translate(750, 250)">
+      <ellipse cx="0" cy="0" rx="6" ry="18" fill="#87CEEB"/>
+      <ellipse cx="-25" cy="-8" rx="20" ry="12" fill="#B0E0E6" transform="rotate(-30)"/>
+      <ellipse cx="25" cy="-8" rx="20" ry="12" fill="#B0E0E6" transform="rotate(30)"/>
+      <ellipse cx="-25" cy="8" rx="20" ry="12" fill="#B0E0E6" transform="rotate(30)"/>
+      <ellipse cx="25" cy="8" rx="20" ry="12" fill="#B0E0E6" transform="rotate(-30)"/>
+    </g>
+  </g>
+</svg>

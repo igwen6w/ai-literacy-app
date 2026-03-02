@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="mtnGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB"/>
+      <stop offset="100%" style="stop-color:#228B22"/>
+    </linearGradient>
+    <linearGradient id="snowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF"/>
+      <stop offset="100%" style="stop-color:#F0F8FF"/>
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect width="1024" height="1024" rx="80" fill="#87CEEB"/>
+  </g>
+  <g id="shadow">
+    <ellipse cx="512" cy="940" rx="400" ry="40" fill="#00000020"/>
+  </g>
+  <g id="main-object">
+    <!-- 远山 -->
+    <path d="M0 600 L150 400 L300 550 L400 350 L550 520 L700 300 L850 480 L1024 350 L1024 1024 L0 1024 Z" fill="#6B8E23"/>
+    <!-- 主山 -->
+    <path d="M150 800 L350 300 L550 800 Z" fill="#32CD32"/>
+    <path d="M200 750 L350 400 L500 750 Z" fill="#228B22"/>
+    <!-- 山峰积雪 -->
+    <path d="M350 300 L300 400 L320 380 L350 420 L380 380 L400 400 Z" fill="url(#snowGrad)"/>
+    <!-- 侧峰 -->
+    <path d="M450 800 L580 450 L710 800 Z" fill="#3CB371"/>
+    <path d="M480 750 L580 520 L680 750 Z" fill="#2E8B57"/>
+    <path d="M580 450 L540 520 L560 500 L580 540 L600 500 L620 520 Z" fill="#FFFFFF"/>
+    <!-- 最低的山 -->
+    <path d="M680 800 L780 550 L880 800 Z" fill="#90EE90"/>
+    <path d="M720 780 L780 600 L840 780 Z" fill="#32CD32"/>
+  </g>
+  <g id="expression">
+    <!-- 山的笑脸 -->
+    <circle cx="350" cy="550" r="12" fill="#2E8B57"/>
+    <circle cx="500" cy="520" r="12" fill="#2E8B57"/>
+    <path d="M380 570 Q425 600 470 570" stroke="#2E8B57" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="accent">
+    <!-- 太阳 -->
+    <circle cx="850" cy="150" r="60" fill="#FFD700"/>
+    <circle cx="850" cy="150" r="45" fill="#FFEC8B"/>
+    <!-- 云朵 -->
+    <g fill="#FFFFFF" opacity="0.9">
+      <ellipse cx="200" cy="180" rx="70" ry="45"/>
+      <ellipse cx="260" cy="165" rx="55" ry="38"/>
+      <ellipse cx="155" cy="170" rx="50" ry="32"/>
+    </g>
+    <!-- 小花小草 -->
+    <g transform="translate(100, 850)">
+      <circle cx="0" cy="0" r="8" fill="#FFB6C1"/>
+      <circle cx="0" cy="0" r="4" fill="#FFD700"/>
+    </g>
+    <g transform="translate(900, 870)">
+      <circle cx="0" cy="0" r="7" fill="#DDA0DD"/>
+      <circle cx="0" cy="0" r="3" fill="#FFD700"/>
+    </g>
+    <!-- 草地 -->
+    <path d="M0 850 Q512 820 1024 850 L1024 1024 L0 1024 Z" fill="#90EE90"/>
+  </g>
+</svg>

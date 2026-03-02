@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB"/>
+      <stop offset="100%" style="stop-color:#E0F7FA"/>
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect width="1024" height="1024" rx="80" fill="url(#skyGrad)"/>
+  </g>
+  <g id="shadow">
+    <ellipse cx="512" cy="880" rx="300" ry="40" fill="#00000020"/>
+  </g>
+  <g id="main-object">
+    <!-- 太阳 -->
+    <circle cx="512" cy="380" r="200" fill="#FFD700"/>
+    <circle cx="512" cy="380" r="160" fill="#FFEC8B"/>
+    <!-- 太阳光芒 -->
+    <g stroke="#FFA500" stroke-width="24" stroke-linecap="round">
+      <line x1="512" y1="120" x2="512" y2="60"/>
+      <line x1="692" y1="200" x2="742" y2="150"/>
+      <line x1="820" y1="380" x2="880" y2="380"/>
+      <line x1="692" y1="560" x2="742" y2="610"/>
+      <line x1="332" y1="200" x2="282" y2="150"/>
+      <line x1="204" y1="380" x2="144" y2="380"/>
+      <line x1="332" y1="560" x2="282" y2="610"/>
+    </g>
+    <!-- 云朵 -->
+    <g fill="#FFFFFF">
+      <ellipse cx="200" cy="250" rx="80" ry="50"/>
+      <ellipse cx="260" cy="230" rx="70" ry="45"/>
+      <ellipse cx="150" cy="240" rx="60" ry="40"/>
+      <ellipse cx="824" cy="550" rx="80" ry="50"/>
+      <ellipse cx="884" cy="530" rx="70" ry="45"/>
+      <ellipse cx="774" cy="540" rx="60" ry="40"/>
+    </g>
+  </g>
+  <g id="expression">
+    <!-- 太阳开心表情 -->
+    <circle cx="460" cy="360" r="20" fill="#FF6B6B"/>
+    <circle cx="564" cy="360" r="20" fill="#FF6B6B"/>
+    <path d="M470 400 Q512 440 554 400" stroke="#FF6B6B" stroke-width="8" fill="none" stroke-linecap="round"/>
+  </g>
+  <g id="accent">
+    <!-- 草地 -->
+    <path d="M0 750 Q256 720 512 750 Q768 780 1024 750 L1024 1024 L0 1024 Z" fill="#90EE90"/>
+    <path d="M0 800 Q256 770 512 800 Q768 830 1024 800 L1024 1024 L0 1024 Z" fill="#32CD32"/>
+  </g>
+</svg>

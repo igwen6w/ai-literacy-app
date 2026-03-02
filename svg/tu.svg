@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="soilGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513"/>
+      <stop offset="100%" style="stop-color:#5D3A1A"/>
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect width="1024" height="1024" rx="80" fill="#FFF8DC"/>
+  </g>
+  <g id="shadow">
+    <ellipse cx="512" cy="920" rx="350" ry="45" fill="#00000020"/>
+  </g>
+  <g id="main-object">
+    <!-- 土堆 -->
+    <path d="M180 800 Q150 650 250 550 Q350 400 512 380 Q674 400 774 550 Q874 650 844 800 Q820 900 512 920 Q204 900 180 800 Z" fill="url(#soilGrad)"/>
+    <path d="M220 780 Q195 650 280 560 Q365 420 512 400 Q659 420 744 560 Q829 650 804 780 Q780 870 512 890 Q244 870 220 780 Z" fill="#A0522D"/>
+    <path d="M260 760 Q240 640 315 555 Q390 425 512 405 Q634 425 709 555 Q784 640 764 760 Q745 845 512 865 Q279 845 260 760 Z" fill="#CD853F"/>
+    <!-- 土壤层次 -->
+    <path d="M300 650 Q350 620 400 650 Q450 680 512 670 Q574 680 624 650 Q674 620 724 650" stroke="#8B4513" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.5"/>
+    <path d="M280 720 Q340 690 400 720 Q460 750 512 740 Q564 750 624 720 Q684 690 744 720" stroke="#8B4513" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </g>
+  <g id="expression">
+    <!-- 土爷爷笑容 -->
+    <circle cx="420" cy="600" r="18" fill="#5D4037"/>
+    <circle cx="604" cy="590" r="18" fill="#5D4037"/>
+    <circle cx="420" cy="600" r="7" fill="#FFFFFF"/>
+    <circle cx="604" cy="590" r="7" fill="#FFFFFF"/>
+    <path d="M460 640 Q512 690 564 640" stroke="#5D4037" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <!-- 脸颊 -->
+    <circle cx="360" cy="620" r="20" fill="#FFB6C1" opacity="0.5"/>
+    <circle cx="664" cy="610" r="20" fill="#FFB6C1" opacity="0.5"/>
+  </g>
+  <g id="accent">
+    <!-- 小草 -->
+    <g fill="#32CD32">
+      <path d="M250 570 Q255 530 260 570 Q265 530 270 570"/>
+      <path d="M280 560 Q288 515 296 560 Q304 515 312 560"/>
+      <path d="M200 590 Q205 555 210 590 Q215 555 220 590"/>
+      <path d="M750 550 Q758 505 766 550 Q774 505 782 550"/>
+      <path d="M800 570 Q805 535 810 570 Q815 535 820 570"/>
+    </g>
+    <!-- 小花 -->
+    <g transform="translate(300, 540)">
+      <circle cx="0" cy="0" r="12" fill="#FFB6C1"/>
+      <circle cx="0" cy="0" r="6" fill="#FFD700"/>
+    </g>
+    <g transform="translate(720, 520)">
+      <circle cx="0" cy="0" r="10" fill="#DDA0DD"/>
+      <circle cx="0" cy="0" r="5" fill="#FFD700"/>
+    </g>
+    <!-- 蘑菇 -->
+    <g transform="translate(600, 650)">
+      <ellipse cx="0" cy="20" rx="15" ry="20" fill="#F5DEB3"/>
+      <ellipse cx="0" cy="0" rx="35" ry="25" fill="#FF6B6B"/>
+      <ellipse cx="0" cy="5" rx="25" ry="15" fill="#FFFFFF"/>
+    </g>
+    <!-- 蜗牛 -->
+    <g transform="translate(380, 750)">
+      <circle cx="0" cy="0" r="25" fill="#DEB887" stroke="#8B4513" stroke-width="2"/>
+      <path d="M-15 -5 Q-25 -20 -10 -30 Q10 -40 25 -25" stroke="#8B4513" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <circle cx="5" cy="-10" r="3" fill="#8B4513"/>
+    </g>
+  </g>
+</svg>

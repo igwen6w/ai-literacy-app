@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <radialGradient id="birdGrad" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#FFD700"/>
+      <stop offset="100%" style="stop-color:#FFA500"/>
+    </radialGradient>
+  </defs>
+  <g id="background">
+    <rect width="1024" height="1024" rx="80" fill="#E0F7FA"/>
+  </g>
+  <g id="shadow">
+    <ellipse cx="512" cy="900" rx="280" ry="40" fill="#00000015"/>
+  </g>
+  <g id="main-object">
+    <!-- 鸟身体 -->
+    <ellipse cx="512" cy="480" rx="180" ry="150" fill="url(#birdGrad)"/>
+    <ellipse cx="512" cy="490" rx="150" ry="120" fill="#FFD700"/>
+    <!-- 翅膀 -->
+    <path d="M350 450 Q250 400 280 500 Q320 550 380 520 Z" fill="#FFA500"/>
+    <path d="M674 450 Q774 400 744 500 Q704 550 644 520 Z" fill="#FFA500"/>
+    <path d="M360 460 Q280 430 300 500 Q330 540 380 520 Z" fill="#FFD700"/>
+    <path d="M664 460 Q744 430 724 500 Q694 540 644 520 Z" fill="#FFD700"/>
+    <!-- 头部 -->
+    <circle cx="512" cy="320" r="100" fill="#FFD700"/>
+    <circle cx="512" cy="320" r="85" fill="#FFEC8B"/>
+    <!-- 眼睛 -->
+    <circle cx="470" cy="300" r="25" fill="#FFFFFF"/>
+    <circle cx="470" cy="300" r="18" fill="#000000"/>
+    <circle cx="470" cy="300" r="8" fill="#FFFFFF"/>
+    <circle cx="554" cy="300" r="25" fill="#FFFFFF"/>
+    <circle cx="554" cy="300" r="18" fill="#000000"/>
+    <circle cx="554" cy="300" r="8" fill="#FFFFFF"/>
+    <!-- 嘴巴 -->
+    <path d="M512 340 L480 380 L512 370 L544 380 Z" fill="#FF8C00"/>
+    <path d="M512 345 L488 375 L512 368 L536 375 Z" fill="#FFA500"/>
+    <!-- 羽毛 -->
+    <g stroke="#FFA500" stroke-width="3" fill="none">
+      <path d="M400 580 Q380 620 400 650"/>
+      <path d="M512 600 Q512 650 512 680"/>
+      <path d="M624 580 Q644 620 624 650"/>
+    </g>
+  </g>
+  <g id="expression">
+    <!-- 开心笑容 -->
+    <path d="M485 360 Q512 390 539 360" stroke="#FF8C00" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <!-- 脸颊 -->
+    <circle cx="430" cy="350" r="20" fill="#FFB6C1" opacity="0.6"/>
+    <circle cx="594" cy="350" r="20" fill="#FFB6C1" opacity="0.6"/>
+  </g>
+  <g id="accent">
+    <!-- 云朵 -->
+    <g fill="#FFFFFF">
+      <ellipse cx="150" cy="180" rx="70" ry="45"/>
+      <ellipse cx="200" cy="165" rx="55" ry="38"/>
+      <ellipse cx="110" cy="170" rx="50" ry="32"/>
+      <ellipse cx="874" cy="150" rx="70" ry="45"/>
+      <ellipse cx="924" cy="135" rx="55" ry="38"/>
+    </g>
+    <!-- 太阳 -->
+    <circle cx="512" cy="120" r="50" fill="#FF6B6B"/>
+    <circle cx="512" cy="120" r="35" fill="#FFB6C1"/>
+    <!-- 树叶 -->
+    <g transform="translate(150, 700)">
+      <path d="M0 80 Q-40 0 0 -80 Q40 0 0 80" fill="#32CD32"/>
+      <path d="M0 80 L0 -80" stroke="#228B22" stroke-width="3"/>
+    </g>
+    <g transform="translate(874, 720)">
+      <path d="M0 80 Q-40 0 0 -80 Q40 0 0 80" fill="#90EE90"/>
+      <path d="M0 80 L0 -80" stroke="#32CD32" stroke-width="3"/>
+    </g>
+    <!-- 草地 -->
+    <path d="M0 850 Q256 820 512 850 Q768 880 1024 850 L1024 1024 L0 1024 Z" fill="#90EE90"/>
+  </g>
+</svg>

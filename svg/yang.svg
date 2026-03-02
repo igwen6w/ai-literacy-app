@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <radialGradient id="sheepGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FFFFFF"/>
+      <stop offset="100%" style="stop-color:#F5F5F5"/>
+    </radialGradient>
+  </defs>
+  <g id="background">
+    <rect width="1024" height="1024" rx="80" fill="#E0F8E8"/>
+  </g>
+  <g id="shadow">
+    <ellipse cx="512" cy="920" rx="320" ry="40" fill="#00000015"/>
+  </g>
+  <g id="main-object">
+    <!-- 羊毛身体 -->
+    <circle cx="400" cy="500" r="80" fill="url(#sheepGrad)"/>
+    <circle cx="500" cy="450" r="90" fill="url(#sheepGrad)"/>
+    <circle cx="600" cy="480" r="85" fill="url(#sheepGrad)"/>
+    <circle cx="450" cy="580" r="75" fill="url(#sheepGrad)"/>
+    <circle cx="550" cy="560" r="80" fill="url(#sheepGrad)"/>
+    <circle cx="350" cy="560" r="70" fill="url(#sheepGrad)"/>
+    <circle cx="650" cy="550" r="70" fill="url(#sheepGrad)"/>
+    <circle cx="500" cy="530" r="85" fill="url(#sheepGrad)"/>
+    <circle cx="450" cy="480" r="75" fill="url(#sheepGrad)"/>
+    <circle cx="550" cy="500" r="70" fill="url(#sheepGrad)"/>
+    <!-- 身体轮廓 -->
+    <ellipse cx="500" cy="520" rx="180" ry="130" fill="#FFFFFF"/>
+    <ellipse cx="500" cy="520" rx="160" ry="110" fill="#F5F5F5"/>
+    <!-- 绵羊头 -->
+    <ellipse cx="500" cy="320" rx="90" ry="100" fill="#F5DEB3"/>
+    <ellipse cx="500" cy="330" rx="75" ry="80" fill="#FFE4B5"/>
+    <!-- 耳朵 -->
+    <ellipse cx="410" cy="280" rx="25" ry="40" fill="#F5DEB3" transform="rotate(-20 410 280)"/>
+    <ellipse cx="590" cy="280" rx="25" ry="40" fill="#F5DEB3" transform="rotate(20 590 280)"/>
+    <!-- 眼睛 -->
+    <circle cx="465" cy="300" r="18" fill="#000000"/>
+    <circle cx="465" cy="300" r="7" fill="#FFFFFF"/>
+    <circle cx="535" cy="300" r="18" fill="#000000"/>
+    <circle cx="535" cy="300" r="7" fill="#FFFFFF"/>
+    <!-- 嘴巴 -->
+    <path d="M480 370 Q500 390 520 370" stroke="#8B4513" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <!-- 腿 -->
+    <g fill="#F5DEB3">
+      <rect x="400" y="620" width="30" height="120" rx="15"/>
+      <rect x="470" y="630" width="30" height="120" rx="15"/>
+      <rect x="530" y="630" width="30" height="120" rx="15"/>
+      <rect x="590" y="620" width="30" height="120" rx="15"/>
+    </g>
+    <!-- 蹄子 -->
+    <ellipse cx="415" cy="740" rx="18" ry="10" fill="#8B4513"/>
+    <ellipse cx="485" cy="750" rx="18" ry="10" fill="#8B4513"/>
+    <ellipse cx="545" cy="750" rx="18" ry="10" fill="#8B4513"/>
+    <ellipse cx="605" cy="740" rx="18" ry="10" fill="#8B4513"/>
+    <!-- 尾巴 -->
+    <circle cx="320" cy="520" r="35" fill="#FFFFFF"/>
+    <circle cx="330" cy="510" r="25" fill="#F5F5F5"/>
+  </g>
+  <g id="expression">
+    <!-- 微笑 -->
+    <path d="M475 350 Q500 375 525 350" stroke="#8B4513" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <!-- 脸颊 -->
+    <circle cx="440" cy="340" r="15" fill="#FFB6C1" opacity="0.5"/>
+    <circle cx="560" cy="340" r="15" fill="#FFB6C1" opacity="0.5"/>
+  </g>
+  <g id="accent">
+    <!-- 草地 -->
+    <path d="M0 850 Q256 820 512 850 Q768 880 1024 850 L1024 1024 L0 1024 Z" fill="#90EE90"/>
+    <!-- 太阳 -->
+    <circle cx="150" cy="150" r="50" fill="#FFD700"/>
+    <circle cx="150" cy="150" r="35" fill="#FFEC8B"/>
+    <!-- 云朵 -->
+    <g fill="#FFFFFF">
+      <ellipse cx="800" cy="180" rx="70" ry="45"/>
+      <ellipse cx="850" cy="165" rx="55" ry="38"/>
+    </g>
+    <!-- 小花 -->
+    <g transform="translate(200, 860)">
+      <circle cx="0" cy="0" r="10" fill="#FFB6C1"/>
+      <circle cx="0" cy="0" r="5" fill="#FFD700"/>
+    </g>
+    <g transform="translate(824, 850)">
+      <circle cx="0" cy="0" r="8" fill="#DDA0DD"/>
+      <circle cx="0" cy="0" r="4" fill="#FFD700"/>
+    </g>
+    <!-- 栅栏 -->
+    <g stroke="#8B4513" stroke-width="8" stroke-linecap="round">
+      <line x1="680" y1="750" x2="680" y2="870"/>
+      <line x1="740" y1="750" x2="740" y2="870"/>
+      <line x1="800" y1="750" x2="800" y2="870"/>
+      <line x1="860" y1="750" x2="860" y2="870"/>
+    </g>
+    <g stroke="#A0522D" stroke-width="6" stroke-linecap="round">
+      <line x1="680" y1="780" x2="860" y2="780"/>
+      <line x1="680" y1="820" x2="860" y2="820"/>
+    </g>
+  </g>
+</svg>
