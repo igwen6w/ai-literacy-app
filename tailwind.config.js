@@ -6,63 +6,86 @@ export default {
   ],
   theme: {
     extend: {
+      // 颜色系统
       colors: {
-        // 可爱马卡龙色系
-        cute: {
-          pink: '#FFB5BA',      // 糖果粉
-          peach: '#FFC3A0',     // 蜜桃橙
-          mint: '#B8F2E6',      // 薄荷绿
-          lavender: '#E0BBE4',  // 薰衣草紫
-          blue: '#AEC6CF',      // 天空蓝
-          yellow: '#FFF4BD',    // 奶油黄
-          coral: '#FF9AA2',     // 珊瑚红
-          periwinkle: '#C7CEEA', // 长春花蓝
+        // 主品牌色 - Teal
+        brand: {
+          50: '#E0F2F1',
+          100: '#B2DFDB',
+          200: '#80CBC4',
+          300: '#4DB6AC',
+          400: '#26A69A',
+          500: '#009688',
+          600: '#00897B',
+          700: '#00796B',
+          800: '#00695C',
+          900: '#004D40',
         },
-        // 主题色
-        primary: {
-          50: '#FFF4BD',
-          100: '#FFE5CC',
-          200: '#FFD4DC',
-          300: '#FFB5BA',
-          400: '#FF9AA2',
-          500: '#FF6B9D',
-          600: '#FF4D94',
-          700: '#E01E6C',
-          800: '#B0155A',
-          900: '#800F48',
+        // 模块配色
+        module: {
+          cards: {
+            DEFAULT: '#FF9800',
+            light: '#FFF3E0',
+            dark: '#F57C00',
+          },
+          game: {
+            DEFAULT: '#03A9F4',
+            light: '#E1F5FE',
+            dark: '#0288D1',
+          },
+          story: {
+            DEFAULT: '#E91E63',
+            light: '#FCE4EC',
+            dark: '#C2185B',
+          },
+          report: {
+            DEFAULT: '#607D8B',
+            light: '#ECEFF1',
+            dark: '#455A64',
+          },
         },
+        // 功能色
+        success: '#4CAF50',
+        warning: '#FF9800',
+        error: '#F44336',
+        info: '#2196F3',
       },
+      // 字体系统
       fontFamily: {
-        'cute': ['"Nunito"', '"Quicksand"', '"Varela Round"', 'system-ui', 'sans-serif'],
-        'fun': ['"Fredoka One"', '"Comic Sans MS"', 'cursive'],
+        sans: ['"Nunito"', 'system-ui', 'sans-serif'],
       },
+      // 圆角
       borderRadius: {
         '4xl': '2rem',
-        '5xl': '2.5rem',
       },
+      // 阴影
       boxShadow: {
-        'pop': '0 8px 30px rgba(255, 107, 157, 0.3)',
-        'pop-lg': '0 12px 40px rgba(255, 107, 157, 0.4)',
-        'soft': '0 4px 20px rgba(0, 0, 0, 0.08)',
-        'glow': '0 0 20px rgba(255, 107, 157, 0.5)',
+        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
       },
+      // 动画
       animation: {
-        'bounce-soft': 'bounce-soft 2s infinite',
-        'wiggle': 'wiggle 1s ease-in-out infinite',
-        'float': 'float 3s ease-in-out infinite',
+        'fade-in': 'fadeIn 0.3s ease-out',
+        'slide-up': 'slideUp 0.4s ease-out',
+        'bounce-gentle': 'bounceGentle 2s ease-in-out infinite',
+        'float': 'float 6s ease-in-out infinite',
       },
       keyframes: {
-        'bounce-soft': {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         },
-        wiggle: {
-          '0%, 100%': { transform: 'rotate(-3deg)' },
-          '50%': { transform: 'rotate(3deg)' },
+        slideUp: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        bounceGentle: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-8px)' },
         },
         float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-12px)' },
         },
       },
     },

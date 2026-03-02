@@ -1,57 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  font-family: 'Nunito', 'Quicksand', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  :root {
+    --color-brand: #009688;
+    --color-brand-light: #E0F2F1;
+    --color-surface: #FFFFFF;
+    --color-background: #F5F5F5;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    background-color: #F5F5F5;
+    color: #1f2937;
+    font-family: 'Nunito', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #app {
+    min-height: 100vh;
+  }
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer components {
+  /* 页面头部 */
+  .page-header {
+    @apply relative overflow-hidden pb-16 pt-6 px-5;
+    background: linear-gradient(135deg, #009688 0%, #00796B 100%);
+  }
+
+  .page-header-content {
+    @apply relative z-10 max-w-2xl mx-auto;
+  }
+
+  .page-title {
+    @apply text-3xl font-black text-white text-center;
+  }
+
+  .page-subtitle {
+    @apply text-center mt-1;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* 玻璃态效果 */
+  .glass {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  /* 卡片 */
+  .card {
+    @apply bg-white rounded-2xl transition-all duration-300;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transform: translateY(-4px);
+  }
+
+  .card:active {
+    transform: scale(0.98);
+  }
+
+  /* 按钮 */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply btn text-white;
+    background-color: #009688;
+    box-shadow: 0 4px 14px rgba(0, 150, 136, 0.25);
+  }
+
+  .btn-primary:hover {
+    background-color: #00897B;
+    box-shadow: 0 10px 25px -5px rgba(0, 150, 136, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  .btn-secondary {
+    @apply btn bg-gray-100 text-gray-700;
+  }
+
+  .btn-secondary:hover {
+    background-color: #E5E7EB;
+  }
+
+  .btn-icon {
+    @apply w-12 h-12 rounded-full flex items-center justify-center text-xl transition-all duration-200;
+  }
+
+  /* 底部导航 */
+  .bottom-nav {
+    @apply fixed bottom-6 left-6 right-6 px-4 py-3 z-50 max-w-md mx-auto;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  .nav-item {
+    @apply flex flex-col items-center gap-1 px-4 py-2 rounded-xl transition-all duration-200;
+    color: #9CA3AF;
+  }
+
+  .nav-item:hover {
+    color: #4B5563;
+    background-color: #F9FAFB;
+  }
+
+  .nav-item.active {
+    color: #009688;
+    background-color: #E0F2F1;
+  }
+
+  /* 进度指示器 */
+  .progress-dots {
+    @apply flex gap-2;
+  }
+
+  .progress-dot {
+    @apply w-2.5 h-2.5 rounded-full bg-gray-200 transition-all duration-300;
+  }
+
+  .progress-dot.active {
+    background-color: #009688;
+    transform: scale(1.25);
+  }
+
+  .progress-dot.completed {
+    background-color: #80CBC4;
+  }
+
+  /* 波浪装饰 */
+  .wave-bottom {
+    @apply absolute bottom-0 left-0 right-0;
+  }
 }
 
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #FFF4BD 0%, #FFD4DC 50%, #B8F2E6 100%);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
+@layer utilities {
+  /* 禁用选择 */
+  .no-select {
+    user-select: none;
+  }
+
+  /* 文本截断 */
+  .text-ellipsis {
+    @apply truncate;
+  }
+
+  /* 安全区域 */
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 1.5rem);
+  }
 }
 
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-#app {
-  min-height: 100vh;
-}
-
-/* Prevent text selection for better touch experience */
-.no-select {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* Card flip animation */
+/* 翻转卡片 */
 .flip-card {
   perspective: 1000px;
 }
 
 .flip-card-inner {
-  transition: transform 0.6s;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform-style: preserve-3d;
 }
 
@@ -69,123 +195,31 @@ body {
   transform: rotateY(180deg);
 }
 
-/* Custom animations */
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.bounce-in {
-  animation: bounce-in 0.5s ease-out;
-}
-
+/* 动画 */
 @keyframes shake {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  10%, 30%, 50%, 70%, 90% {
-    transform: translateX(-10px);
-  }
-  20%, 40%, 60%, 80% {
-    transform: translateX(10px);
-  }
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
 }
 
-.shake {
-  animation: shake 0.5s ease-in-out;
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
 }
 
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
-  }
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-.pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded;
 }
 
-/* 马里奥像素风格 */
-.mario-pixel {
-  font-family: '"Press Start 2P"', '"VT323"', monospace;
-  image-rendering: pixelated;
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded;
 }
 
-.pixel-border {
-  position: relative;
-  box-shadow:
-    4px 0 0 0 #000,
-    -4px 0 0 0 #000,
-    0 4px 0 0 #000,
-    0 -4px 0 0 #000;
-}
-
-.pixel-button {
-  background: #e52521;
-  color: white;
-  border: 4px solid #000;
-  padding: 12px 24px;
-  font-family: '"Press Start 2P"', monospace;
-  font-size: 14px;
-  cursor: pointer;
-  position: relative;
-  box-shadow: 4px 4px 0 0 #000;
-  transition: all 0.1s;
-}
-
-.pixel-button:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 0 #000;
-}
-
-.pixel-button:active {
-  transform: translate(0, 0);
-  box-shadow: 2px 2px 0 0 #000;
-}
-
-.mario-bg {
-  background: #5c94fc;
-  background-image:
-    linear-gradient(180deg, #5c94fc 0%, #5c94fc 50%, #00a800 50%, #00a800 100%);
-  background-size: 100% 200px;
-}
-
-.question-block {
-  width: 60px;
-  height: 60px;
-  background: #ffa800;
-  border: 4px solid #000;
-  position: relative;
-  box-shadow: 4px 4px 0 0 #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-  font-weight: bold;
-}
-
-.question-block::before {
-  content: '?';
-  color: #000;
-}
-
-@keyframes coin-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.coin {
-  animation: coin-bounce 0.5s ease-in-out;
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
 }

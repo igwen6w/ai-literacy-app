@@ -1,70 +1,122 @@
 <template>
-  <div class="levels-view">
-    <div class="top-bar">
-      <button @click="goBack" class="back-btn">← 返回</button>
-      <h2>选择关卡</h2>
-      <div class="spacer"></div>
-    </div>
-
-    <div class="levels-container">
-      <div
-        v-for="level in levels"
-        :key="level.id"
-        class="level-card"
-        :class="{
-          locked: level.starsRequired > progress.totalStars,
-          unlocked: level.starsRequired <= progress.totalStars
-        }"
-        @click="selectLevel(level)"
-      >
-        <div class="level-number">第 {{ level.id }} 关</div>
-        <div class="level-name">{{ level.name }}</div>
-        <div class="level-description">{{ level.description }}</div>
-
-        <div class="level-stats">
-          <div class="stat">
-            <span class="label">汉字</span>
-            <span class="value">{{ level.hanziCount }}</span>
-          </div>
-          <div class="stat">
-            <span class="label">类型</span>
-            <span class="value">{{ getLevelTypeName(level.type) }}</span>
-          </div>
-        </div>
-
-        <div v-if="level.hanzi && level.hanzi.length > 0" class="hanzi-preview">
-          <span class="hanzi-char" v-for="char in level.hanzi" :key="char">{{ char }}</span>
-        </div>
-
-        <div class="level-stars">
-          <span
-            v-for="i in 3"
-            :key="i"
-            class="star"
-            :class="{ earned: progress.getLevelStars(level.id) >= i }"
-          >
-            {{ progress.getLevelStars(level.id) >= i ? '⭐' : '☆' }}
-          </span>
-        </div>
-
-        <div v-if="level.starsRequired > progress.totalStars" class="lock-overlay">
-          <div class="lock-icon">🔒</div>
-          <div class="require-stars">需要 {{ level.starsRequired }} ⭐</div>
-        </div>
-
-        <button class="play-button" :disabled="level.starsRequired > progress.totalStars">
-          {{ level.starsRequired > progress.totalStars ? '锁定' : '开始' }}
+  <div class="min-h-screen bg-[#F5F5F5] pb-28">
+    <!-- Header -->
+    <header class="page-header">
+      <div class="absolute top-4 right-8 w-20 h-20 bg-white/10 rounded-full animate-float"></div>
+      
+      <div class="page-header-content">
+        <button @click="goBack" class="glass rounded-xl px-4 py-2 flex items-center gap-2 text-white font-bold w-fit mb-4">
+          <span>←</span>
+          <span>返回</span>
         </button>
+        
+        <h1 class="page-title">选择关卡</h1>
+        <p class="page-subtitle">挑战自己，收集星星</p>
+      </div>
+      
+      <svg class="wave-bottom" viewBox="0 0 1440 60" fill="none">
+        <path d="M0 60L60 52C120 44 240 28 360 24C480 20 600 28 720 32C840 36 960 36 1080 38C1200 40 1320 44 1380 46L1440 48V60H0Z" fill="#F5F5F5"/>
+      </svg>
+    </header>
+
+    <!-- Level list -->
+    <main class="px-5 -mt-4 relative z-10">
+      <div class="space-y-4 max-w-2xl mx-auto">
+        <div
+          v-for="level in levels"
+          :key="level.id"
+          @click="selectLevel(level)"
+          class="card p-5 relative overflow-hidden"
+          :class="{ 
+            'opacity-60 cursor-not-allowed': level.starsRequired > progress.totalStars,
+            'cursor-pointer': level.starsRequired <= progress.totalStars 
+          }"
+        >
+          <div class="absolute top-0 right-0 w-20 h-20 bg-brand-50 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          
+          <div class="flex items-center gap-4 relative">
+            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center text-2xl shadow-md flex-shrink-0">
+              {{ getLevelIcon(level.type) }}
+            </div>
+            
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-bold text-brand-700 bg-brand-50 px-2 py-0.5 rounded-full">第 {{ level.id }} 关</span>
+                <span class="text-xs text-gray-400">{{ getLevelTypeName(level.type) }}</span>
+              </div>
+              <h3 class="font-bold text-gray-800 mb-1 truncate">{{ level.name }}</h3>
+              <p class="text-sm text-gray-500 mb-2">{{ level.description }}</p>
+              
+              <div v-if="level.hanzi && level.hanzi.length > 0" class="flex gap-1.5 mb-2">
+                <span v-for="char in level.hanzi.slice(0, 4)" :key="char" 
+                  class="w-7 h-7 rounded bg-gray-50 flex items-center justify-center text-sm font-bold text-gray-700 border border-gray-100">
+                  {{ char }}
+                </span>
+                <span v-if="level.hanzi.length > 4" class="text-xs text-gray-400 self-center">+{{ level.hanzi.length - 4 }}</span>
+              </div>
+              
+              <div class="flex items-center gap-0.5">
+                <span v-for="i in 3" :key="i" class="text-base"
+                  :class="progress.getLevelStars(level.id) >= i ? 'text-yellow-400' : 'text-gray-200'">
+                  {{ progress.getLevelStars(level.id) >= i ? '★' : '☆' }}
+                </span>
+              </div>
+            </div>
+            
+            <div class="flex-shrink-0">
+              <button v-if="level.starsRequired <= progress.totalStars"
+                class="btn-icon bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-md hover:shadow-lg">
+                ▶
+              </button>
+              <div v-else class="w-12 h-12 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center">
+                🔒
+              </div>
+            </div>
+          </div>
+          
+          <!-- Lock overlay -->
+          <div v-if="level.starsRequired > progress.totalStars" 
+            class="absolute inset-0 bg-white/60 backdrop-blur-[1px] flex items-center justify-center rounded-2xl">
+            <div class="bg-white rounded-xl px-4 py-3 shadow-lg text-center">
+              <div class="text-2xl mb-1">🔒</div>
+              <div class="text-sm font-bold text-gray-700">需 {{ level.starsRequired }} 颗星</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Stats floating card -->
+    <div class="fixed bottom-24 left-5 right-5 max-w-sm mx-auto">
+      <div class="card px-5 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-xl shadow-md">
+            ⭐
+          </div>
+          <div>
+            <div class="text-xs text-gray-500">已获得星星</div>
+            <div class="text-xl font-black text-gray-800">{{ progress.totalStars }}</div>
+          </div>
+        </div>
+        <div class="text-right">
+          <div class="text-xs text-gray-500">目标</div>
+          <div class="text-base font-bold text-brand-600">{{ maxStars }}</div>
+        </div>
       </div>
     </div>
 
-    <div class="total-stars">
-      总星星: {{ progress.totalStars }} ⭐
+    <!-- Bottom bar -->
+    <div class="fixed bottom-0 left-0 right-0 h-1 flex">
+      <div class="flex-1 bg-module-cards"></div>
+      <div class="flex-1 bg-module-game"></div>
+      <div class="flex-1 bg-module-story"></div>
+      <div class="flex-1 bg-module-report"></div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useProgressStore } from '@/stores/progress'
 import { levels } from '@/data/levels'
@@ -72,234 +124,35 @@ import { levels } from '@/data/levels'
 const router = useRouter()
 const progress = useProgressStore()
 
-function goBack() {
-  router.push('/')
-}
+const maxStars = computed(() => levels.length * 3)
 
-function selectLevel(level) {
+const goBack = () => router.push('/')
+
+const selectLevel = (level) => {
   if (level.starsRequired <= progress.totalStars) {
     router.push(`/game/${level.id}`)
   }
 }
 
-function getLevelTypeName(type) {
-  const typeNames = {
+const getLevelTypeName = (type) => {
+  const names = {
     'learn': '学习',
-    'game-listen': '听音',
-    'game-visual': '看图',
-    'game-speak': '朗读',
-    'game-final': '综合'
+    'game-listen': '听音辨字',
+    'game-visual': '看图识字',
+    'game-speak': '朗读练习',
+    'game-final': '综合挑战'
   }
-  return typeNames[type] || '游戏'
+  return names[type] || '游戏'
+}
+
+const getLevelIcon = (type) => {
+  const icons = {
+    'learn': '📚',
+    'game-listen': '👂',
+    'game-visual': '👀',
+    'game-speak': '🎤',
+    'game-final': '🏆'
+  }
+  return icons[type] || '🎮'
 }
 </script>
-
-<style scoped>
-.levels-view {
-  min-height: 100vh;
-  padding: 20px;
-  padding-bottom: 100px;
-}
-
-.top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 30px;
-}
-
-.back-btn {
-  padding: 8px 16px;
-  border: none;
-  background: #FF9AA2;
-  color: white;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.spacer {
-  width: 70px;
-}
-
-.levels-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.level-card {
-  background: white;
-  padding: 24px;
-  border-radius: 24px;
-  box-shadow: 0 8px 25px rgba(255, 107, 157, 0.15);
-  cursor: pointer;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-  font-family: 'Nunito', sans-serif;
-}
-
-.level-card:hover:not(.locked) {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 35px rgba(255, 107, 157, 0.25);
-}
-
-.level-card.locked {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.level-number {
-  font-size: 14px;
-  color: #FF6B9D;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.level-name {
-  font-size: 20px;
-  font-weight: 800;
-  color: #800F48;
-  margin-bottom: 8px;
-}
-
-.level-description {
-  font-size: 14px;
-  color: #718096;
-  margin-bottom: 16px;
-}
-
-.level-stats {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 16px;
-}
-
-.stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.stat .label {
-  font-size: 12px;
-  color: #718096;
-  margin-bottom: 4px;
-}
-
-.stat .value {
-  font-size: 16px;
-  font-weight: 700;
-  color: #FF6B9D;
-}
-
-.hanzi-preview {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 12px;
-  padding: 8px;
-  background: #f7fafc;
-  border-radius: 12px;
-}
-
-.hanzi-char {
-  font-size: 18px;
-  font-weight: 600;
-  color: #800F48;
-  padding: 4px 8px;
-  background: white;
-  border-radius: 8px;
-  min-width: 32px;
-  text-align: center;
-}
-
-.level-stars {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-
-.star {
-  font-size: 24px;
-  color: #e2e8f0;
-  transition: color 0.3s;
-}
-
-.star.earned {
-  color: #FFD93D;
-}
-
-.lock-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 24px;
-  backdrop-filter: blur(2px);
-}
-
-.lock-icon {
-  font-size: 32px;
-  margin-bottom: 8px;
-}
-
-.require-stars {
-  font-size: 14px;
-  color: white;
-  font-weight: 600;
-}
-
-.play-button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  background: linear-gradient(135deg, #FF6B9D 0%, #FF9AA2 100%);
-  color: white;
-  border-radius: 16px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.play-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
-}
-
-.play-button:disabled {
-  background: #e2e8f0;
-  cursor: not-allowed;
-}
-
-.total-stars {
-  position: fixed;
-  bottom: 90px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  padding: 16px 32px;
-  border-radius: 50px;
-  box-shadow: 0 8px 25px rgba(255, 107, 157, 0.2);
-  font-size: 18px;
-  font-weight: 700;
-  color: #FF6B9D;
-}
-
-@media (max-width: 640px) {
-  .levels-container {
-    grid-template-columns: 1fr;
-  }
-}
-</style>

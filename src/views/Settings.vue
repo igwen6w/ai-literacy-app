@@ -1,100 +1,115 @@
 <template>
-  <div class="settings">
-    <div class="top-bar">
-      <button @click="goBack" class="back-btn">← 返回</button>
-      <h2>设置</h2>
-      <div class="spacer"></div>
-    </div>
+  <div class="min-h-screen bg-[#F5F5F5] pb-10">
+    <!-- Header -->
+    <header class="page-header">
+      <div class="absolute top-4 right-8 w-20 h-20 bg-white/10 rounded-full animate-float"></div>
+      
+      <div class="page-header-content">
+        <button @click="goBack" class="glass rounded-xl px-4 py-2 flex items-center gap-2 text-white font-bold w-fit mb-4">
+          <span>←</span>
+          <span>返回</span>
+        </button>
+        
+        <h1 class="page-title">设置</h1>
+        <p class="page-subtitle">个性化学习体验</p>
+      </div>
+      
+      <svg class="wave-bottom" viewBox="0 0 1440 60" fill="none">
+        <path d="M0 60L60 52C120 44 240 28 360 24C480 20 600 28 720 32C840 36 960 36 1080 38C1200 40 1320 44 1380 46L1440 48V60H0Z" fill="#F5F5F5"/>
+      </svg>
+    </header>
 
-    <div class="settings-sections">
-      <!-- 声音设置 -->
-      <div class="setting-section">
-        <h3>🔊 声音设置</h3>
+    <main class="px-5 -mt-6 relative z-10 max-w-2xl mx-auto space-y-5">
+      <!-- Sound settings -->
+      <div class="card p-5">
+        <h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <span class="w-7 h-7 rounded-lg bg-brand-500 text-white flex items-center justify-center text-xs">🔊</span>
+          声音设置
+        </h3>
 
-        <div class="setting-item">
-          <label>启用音效</label>
-          <button
-            @click="settings.setSoundEnabled(!settings.soundEnabled)"
-            class="toggle-btn"
-            :class="{ active: settings.soundEnabled }"
-          >
-            {{ settings.soundEnabled ? 'ON' : 'OFF' }}
-          </button>
-        </div>
+        <div class="space-y-4">
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-700">启用音效</span>
+            <button @click="settings.setSoundEnabled(!settings.soundEnabled)"
+              class="relative w-12 h-6 rounded-full transition-colors"
+              :class="settings.soundEnabled ? 'bg-brand-500' : 'bg-gray-200'">
+              <span class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform"
+                :class="settings.soundEnabled ? 'translate-x-6' : 'translate-x-0'"></span>
+            </button>
+          </div>
 
-        <div class="setting-item">
-          <label>启用语音</label>
-          <button
-            @click="settings.setVoiceEnabled(!settings.voiceEnabled)"
-            class="toggle-btn"
-            :class="{ active: settings.voiceEnabled }"
-          >
-            {{ settings.voiceEnabled ? 'ON' : 'OFF' }}
-          </button>
-        </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-700">启用语音</span>
+            <button @click="settings.setVoiceEnabled(!settings.voiceEnabled)"
+              class="relative w-12 h-6 rounded-full transition-colors"
+              :class="settings.voiceEnabled ? 'bg-brand-500' : 'bg-gray-200'">
+              <span class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform"
+                :class="settings.voiceEnabled ? 'translate-x-6' : 'translate-x-0'"></span>
+            </button>
+          </div>
 
-        <div class="setting-item">
-          <label>语音速度</label>
-          <div class="slider-container">
-            <input
-              type="range"
-              min="0.5"
-              max="2"
-              step="0.1"
-              :value="settings.voiceSpeed"
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-sm text-gray-700">语音速度</span>
+              <span class="text-sm font-bold text-brand-600">{{ settings.voiceSpeed }}x</span>
+            </div>
+            <input type="range" min="0.5" max="2" step="0.1" :value="settings.voiceSpeed"
               @input="settings.setVoiceSpeed(parseFloat($event.target.value))"
-              class="slider"
-            />
-            <span class="slider-value">{{ settings.voiceSpeed }}x</span>
+              class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-brand-500">
           </div>
         </div>
       </div>
 
-      <!-- AI 设置 -->
-      <div class="setting-section">
-        <h3>🤖 AI 设置</h3>
+      <!-- AI settings -->
+      <div class="card p-5">
+        <h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <span class="w-7 h-7 rounded-lg bg-module-game text-white flex items-center justify-center text-xs">🤖</span>
+          AI 设置
+        </h3>
 
-        <div class="setting-item">
-          <label>OpenAI API Key (可选)</label>
-          <input
-            type="password"
-            :value="settings.aiApiKey"
-            @input="settings.setAiApiKey($event.target.value)"
-            placeholder="sk-..."
-            class="text-input"
-          />
-        </div>
-
-        <p class="hint">
-          启用 AI 功能可以获得更准确的语音识别和智能对话功能
-        </p>
-      </div>
-
-      <!-- 家长设置 -->
-      <div class="setting-section">
-        <h3>👨‍👩‍👧 家长设置</h3>
-
-        <div class="setting-item">
-          <label>每日学习限制 (分钟)</label>
-          <input
-            type="number"
-            :value="settings.dailyTimeLimit"
-            @input="settings.setDailyTimeLimit(parseInt($event.target.value))"
-            min="5"
-            max="120"
-            class="number-input"
-          />
+        <div class="space-y-3">
+          <div>
+            <label class="text-sm text-gray-700 block mb-2">OpenAI API Key (可选)</label>
+            <input type="password" :value="settings.aiApiKey" @input="settings.setAiApiKey($event.target.value)"
+              placeholder="sk-..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-500 focus:outline-none text-sm">
+          </div>
+          <p class="text-xs text-gray-400">启用 AI 功能可获得更准确的语音识别</p>
         </div>
       </div>
 
-      <!-- 数据管理 -->
-      <div class="setting-section danger">
-        <h3>⚠️ 数据管理</h3>
+      <!-- Parent settings -->
+      <div class="card p-5">
+        <h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <span class="w-7 h-7 rounded-lg bg-module-cards text-white flex items-center justify-center text-xs">👨‍👩‍👧</span>
+          家长设置
+        </h3>
 
-        <button @click="confirmReset" class="reset-btn">
+        <div>
+          <label class="text-sm text-gray-700 block mb-2">每日学习限制 (分钟)</label>
+          <input type="number" :value="settings.dailyTimeLimit" @input="settings.setDailyTimeLimit(parseInt($event.target.value))"
+            min="5" max="120" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-500 focus:outline-none text-sm">
+        </div>
+      </div>
+
+      <!-- Data management -->
+      <div class="card p-5 border-2 border-error/20">
+        <h3 class="font-bold text-error mb-4 flex items-center gap-2">
+          <span class="w-7 h-7 rounded-lg bg-error/10 text-error flex items-center justify-center text-xs">⚠️</span>
+          数据管理
+        </h3>
+
+        <button @click="confirmReset" class="w-full py-3.5 rounded-xl border-2 border-error/30 text-error font-bold hover:bg-error/5 transition-colors">
           重置所有进度
         </button>
       </div>
+    </main>
+
+    <!-- Bottom bar -->
+    <div class="fixed bottom-0 left-0 right-0 h-1 flex">
+      <div class="flex-1 bg-module-cards"></div>
+      <div class="flex-1 bg-module-game"></div>
+      <div class="flex-1 bg-module-story"></div>
+      <div class="flex-1 bg-module-report"></div>
     </div>
   </div>
 </template>
@@ -108,7 +123,7 @@ const router = useRouter()
 const progress = useProgressStore()
 const settings = useSettingsStore()
 
-function confirmReset() {
+const confirmReset = () => {
   if (confirm('确定要重置所有学习进度吗？此操作无法撤销！')) {
     progress.resetProgress()
     settings.resetSettings()
@@ -117,149 +132,5 @@ function confirmReset() {
   }
 }
 
-function goBack() {
-  router.push('/')
-}
+const goBack = () => router.push('/')
 </script>
-
-<style scoped>
-.settings {
-  min-height: 100vh;
-  padding: 20px;
-  padding-bottom: 80px;
-}
-
-.top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 25px;
-}
-
-.back-btn {
-  padding: 8px 16px;
-  border: none;
-  background: #e2e8f0;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.spacer {
-  width: 70px;
-}
-
-.settings-sections {
-  max-width: 600px;
-}
-
-.setting-section {
-  background: white;
-  padding: 20px;
-  border-radius: 16px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-}
-
-h3 {
-  font-size: 18px;
-  color: #2d3748;
-  margin-bottom: 15px;
-}
-
-.setting-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 0;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.setting-item:last-child {
-  border-bottom: none;
-}
-
-.setting-item label {
-  font-size: 15px;
-  color: #4a5568;
-}
-
-.toggle-btn {
-  padding: 8px 20px;
-  border: 2px solid #cbd5e0;
-  background: white;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #718096;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.toggle-btn.active {
-  background: #4caf50;
-  border-color: #4caf50;
-  color: white;
-}
-
-.slider-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.slider {
-  width: 120px;
-  accent-color: #4caf50;
-}
-
-.slider-value {
-  font-size: 14px;
-  font-weight: bold;
-  color: #4caf50;
-  min-width: 40px;
-}
-
-.text-input,
-.number-input {
-  padding: 8px 12px;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  font-size: 14px;
-  width: 200px;
-}
-
-.text-input:focus,
-.number-input:focus {
-  outline: none;
-  border-color: #4caf50;
-}
-
-.hint {
-  font-size: 13px;
-  color: #718096;
-  margin-top: 10px;
-  line-height: 1.5;
-}
-
-.setting-section.danger h3 {
-  color: #e53e3e;
-}
-
-.reset-btn {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid #fc8181;
-  background: white;
-  color: #e53e3e;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.reset-btn:hover {
-  background: #fff5f5;
-}
-</style>

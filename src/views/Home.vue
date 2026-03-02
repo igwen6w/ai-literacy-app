@@ -1,92 +1,191 @@
 <template>
-  <div class="home">
-    <!-- 头部 -->
-    <header class="header">
-      <div class="logo">
-        <span class="logo-emoji">📚</span>
-        <h1>AI识字宝</h1>
-      </div>
-      <div class="header-stats">
-        <div class="stat-item">
-          <span class="icon">⭐</span>
-          <span class="value">{{ progress.totalStars }}</span>
+  <div class="min-h-screen bg-[#F5F5F5]">
+    <!-- Header -->
+    <header class="page-header">
+      <!-- Floating decorations -->
+      <div class="absolute top-4 left-4 w-24 h-24 bg-white/10 rounded-full animate-float"></div>
+      <div class="absolute top-12 right-8 w-16 h-16 bg-white/10 rounded-full animate-bounce-gentle"></div>
+      
+      <div class="page-header-content">
+        <!-- Top bar -->
+        <div class="flex justify-between items-center mb-6">
+          <div class="glass rounded-xl px-4 py-2.5 flex items-center gap-3">
+            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-2xl shadow-sm">
+              📚
+            </div>
+            <span class="text-white font-bold text-lg">识字宝</span>
+          </div>
+          
+          <div class="glass rounded-xl px-4 py-2.5 flex items-center gap-2">
+            <span>⭐</span>
+            <span class="text-white font-bold text-lg">{{ progress.totalStars }}</span>
+          </div>
         </div>
-        <div class="stat-item">
-          <span class="icon">📖</span>
-          <span class="value">{{ progress.totalLearnedCount }}</span>
-        </div>
+        
+        <!-- Title -->
+        <h1 class="page-title">快乐学汉字</h1>
+        <p class="page-subtitle">每天进步一点点</p>
       </div>
+      
+      <!-- Wave -->
+      <svg class="wave-bottom" viewBox="0 0 1440 60" fill="none">
+        <path d="M0 60L60 52C120 44 240 28 360 24C480 20 600 28 720 32C840 36 960 36 1080 38C1200 40 1320 44 1380 46L1440 48V60H0Z" fill="#F5F5F5"/>
+      </svg>
     </header>
 
-    <!-- 主菜单 -->
-    <main class="main-content">
-      <section class="welcome-section">
-        <h2>欢迎来到识字宝！</h2>
-        <p>选择你想玩的学习模式吧～</p>
-      </section>
-
-      <section class="menu-grid">
-        <div @click="goToCards" class="menu-card cards">
-          <div class="card-icon">📇</div>
-          <h3>识字卡片</h3>
-          <p>翻转卡片学习汉字</p>
+    <!-- Main content -->
+    <main class="px-5 -mt-6 relative z-10 pb-28">
+      <!-- Game cards grid -->
+      <div class="grid grid-cols-2 gap-4 max-w-3xl mx-auto">
+        <!-- Cards -->
+        <div @click="goToCards" class="card p-5 cursor-pointer relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-module-cards-light rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <div class="absolute top-3 right-3 bg-module-cards-light text-module-cards-dark text-xs font-bold px-2.5 py-1 rounded-full">
+            3-8岁
+          </div>
+          
+          <div class="relative">
+            <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-module-cards to-module-cards-dark flex items-center justify-center text-3xl shadow-lg mb-3 group-hover:scale-110 transition-transform">
+              📇
+            </div>
+            <h3 class="font-bold text-gray-800 mb-1">识字卡片</h3>
+            <p class="text-gray-500 text-sm mb-3">翻转卡片学汉字</p>
+            <button class="text-module-cards font-bold text-sm flex items-center gap-1">
+              开始学习 <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </button>
+          </div>
+          
+          <div class="flex gap-1 mt-3">
+            <div v-for="i in 5" :key="i" class="h-1 rounded-full flex-1" :class="i <= 3 ? 'bg-module-cards' : 'bg-gray-100'"></div>
+          </div>
         </div>
 
-        <div @click="goToLevels" class="menu-card game">
-          <div class="card-icon">🎮</div>
-          <h3>游戏闯关</h3>
-          <p>边玩边学更开心</p>
+        <!-- Game -->
+        <div @click="goToLevels" class="card p-5 cursor-pointer relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-module-game-light rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <div class="absolute top-3 right-3 bg-module-game-light text-module-game-dark text-xs font-bold px-2.5 py-1 rounded-full">
+            4-8岁
+          </div>
+          
+          <div class="relative">
+            <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-module-game to-module-game-dark flex items-center justify-center text-3xl shadow-lg mb-3 group-hover:scale-110 transition-transform">
+              🎮
+            </div>
+            <h3 class="font-bold text-gray-800 mb-1">游戏闯关</h3>
+            <p class="text-gray-500 text-sm mb-3">边玩边学更开心</p>
+            <button class="text-module-game font-bold text-sm flex items-center gap-1">
+              开始挑战 <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </button>
+          </div>
+          
+          <div class="flex gap-1 mt-3">
+            <div v-for="i in 5" :key="i" class="h-1 rounded-full flex-1" :class="i <= 2 ? 'bg-module-game' : 'bg-gray-100'"></div>
+          </div>
         </div>
 
-        <div @click="goToStorybook" class="menu-card story">
-          <div class="card-icon">📖</div>
-          <h3>互动绘本</h3>
-          <p>在故事中学习</p>
+        <!-- Story -->
+        <div @click="goToStorybook" class="card p-5 cursor-pointer relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-module-story-light rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <div class="absolute top-3 right-3 bg-module-story-light text-module-story-dark text-xs font-bold px-2.5 py-1 rounded-full">
+            5-8岁
+          </div>
+          
+          <div class="relative">
+            <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-module-story to-module-story-dark flex items-center justify-center text-3xl shadow-lg mb-3 group-hover:scale-110 transition-transform">
+              📖
+            </div>
+            <h3 class="font-bold text-gray-800 mb-1">互动绘本</h3>
+            <p class="text-gray-500 text-sm mb-3">在故事中学习</p>
+            <button class="text-module-story font-bold text-sm flex items-center gap-1">
+              开始阅读 <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </button>
+          </div>
+          
+          <div class="flex gap-1 mt-3">
+            <div v-for="i in 5" :key="i" class="h-1 rounded-full flex-1 bg-gray-100"></div>
+          </div>
         </div>
 
-        <div @click="goToDashboard" class="menu-card dashboard">
-          <div class="card-icon">📊</div>
-          <h3>学习报告</h3>
-          <p>查看学习进度</p>
+        <!-- Report -->
+        <div @click="goToDashboard" class="card p-5 cursor-pointer relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-module-report-light rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <div class="absolute top-3 right-3 bg-module-report-light text-module-report-dark text-xs font-bold px-2.5 py-1 rounded-full">
+            全部
+          </div>
+          
+          <div class="relative">
+            <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-module-report to-module-report-dark flex items-center justify-center text-3xl shadow-lg mb-3 group-hover:scale-110 transition-transform">
+              📊
+            </div>
+            <h3 class="font-bold text-gray-800 mb-1">学习报告</h3>
+            <p class="text-gray-500 text-sm mb-3">查看学习进度</p>
+            <button class="text-module-report font-bold text-sm flex items-center gap-1">
+              查看报告 <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </button>
+          </div>
+          
+          <div class="flex gap-1 mt-3">
+            <div v-for="i in 5" :key="i" class="h-1 rounded-full flex-1" :class="i <= 4 ? 'bg-module-report' : 'bg-gray-100'"></div>
+          </div>
         </div>
-      </section>
+      </div>
 
-      <!-- 快速统计 -->
-      <section class="quick-stats">
-        <div class="stat-card">
-          <div class="stat-label">学习天数</div>
-          <div class="stat-number">{{ progress.studyDays }}</div>
+      <!-- Stats -->
+      <div class="card mt-5 p-5 max-w-3xl mx-auto">
+        <h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-white text-sm">🏆</span>
+          学习成就
+        </h3>
+        
+        <div class="grid grid-cols-3 gap-4">
+          <div class="text-center p-4 bg-brand-50 rounded-xl">
+            <div class="text-2xl font-black text-brand-600">{{ progress.studyDays }}</div>
+            <div class="text-xs text-gray-500">学习天数</div>
+          </div>
+          <div class="text-center p-4 bg-module-game-light rounded-xl">
+            <div class="text-2xl font-black text-module-game">{{ Math.floor(progress.totalStudyTime / 60) }}</div>
+            <div class="text-xs text-gray-500">学习时长</div>
+          </div>
+          <div class="text-center p-4 bg-module-cards-light rounded-xl">
+            <div class="text-2xl font-black text-module-cards">{{ progress.totalStars }}</div>
+            <div class="text-xs text-gray-500">获得星星</div>
+          </div>
         </div>
-        <div class="stat-card">
-          <div class="stat-label">学习时长</div>
-          <div class="stat-number">{{ Math.floor(progress.totalStudyTime / 60) }}h</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">当前星级</div>
-          <div class="stat-number">{{ progress.totalStars }}⭐</div>
-        </div>
-      </section>
+      </div>
     </main>
 
-    <!-- 底部导航 -->
+    <!-- Bottom nav -->
     <nav class="bottom-nav">
-      <router-link to="/" class="nav-item active">
-        <span class="nav-icon">🏠</span>
-        <span class="nav-label">首页</span>
-      </router-link>
-      <router-link to="/levels" class="nav-item">
-        <span class="nav-icon">🎮</span>
-        <span class="nav-label">闯关</span>
-      </router-link>
-      <router-link to="/cards" class="nav-item">
-        <span class="nav-icon">📇</span>
-        <span class="nav-label">卡片</span>
-      </router-link>
-      <router-link to="/dashboard" class="nav-item">
-        <span class="nav-icon">📊</span>
-        <span class="nav-label">报告</span>
-      </router-link>
+      <div class="flex justify-around">
+        <router-link to="/" class="nav-item" :class="{ 'active': $route.path === '/' }">
+          <span class="text-xl">🏠</span>
+          <span class="text-xs font-bold">首页</span>
+        </router-link>
+        
+        <router-link to="/levels" class="nav-item" :class="{ 'active': $route.path === '/levels' }">
+          <span class="text-xl">🎮</span>
+          <span class="text-xs font-bold">闯关</span>
+        </router-link>
+        
+        <router-link to="/cards" class="nav-item" :class="{ 'active': $route.path === '/cards' }">
+          <span class="text-xl">📇</span>
+          <span class="text-xs font-bold">卡片</span>
+        </router-link>
+        
+        <router-link to="/dashboard" class="nav-item" :class="{ 'active': $route.path === '/dashboard' }">
+          <span class="text-xl">📊</span>
+          <span class="text-xs font-bold">报告</span>
+        </router-link>
+      </div>
     </nav>
+
+    <!-- Bottom bar -->
+    <div class="fixed bottom-0 left-0 right-0 h-1 flex">
+      <div class="flex-1 bg-module-cards"></div>
+      <div class="flex-1 bg-module-game"></div>
+      <div class="flex-1 bg-module-story"></div>
+      <div class="flex-1 bg-module-report"></div>
+    </div>
   </div>
 </template>
 
@@ -97,253 +196,8 @@ import { useProgressStore } from '@/stores/progress'
 const router = useRouter()
 const progress = useProgressStore()
 
-function goToCards() {
-  router.push('/cards')
-}
-
-function goToLevels() {
-  router.push('/levels')
-}
-
-function goToStorybook() {
-  router.push('/storybook')
-}
-
-function goToDashboard() {
-  router.push('/dashboard')
-}
+const goToCards = () => router.push('/cards')
+const goToLevels = () => router.push('/levels')
+const goToStorybook = () => router.push('/storybook')
+const goToDashboard = () => router.push('/dashboard')
 </script>
-
-<style scoped>
-.home {
-  min-height: 100vh;
-  padding-bottom: 80px;
-  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
-}
-
-.header {
-  background: linear-gradient(135deg, #FFD93D 0%, #FF9F43 100%);
-  color: #8B5A2B;
-  padding: 20px;
-  border-radius: 0 0 30px 30px;
-  box-shadow: 0 6px 0px 0px rgba(139, 90, 43, 0.2);
-  border-bottom: 4px solid #8B5A2B;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 15px;
-}
-
-.logo-emoji {
-  font-size: 42px;
-  filter: drop-shadow(2px 2px 0px rgba(139, 90, 43, 0.3));
-}
-
-.logo h1 {
-  font-size: 32px;
-  margin: 0;
-  font-weight: 900;
-  text-shadow: 2px 2px 0px rgba(139, 90, 43, 0.2);
-}
-
-.header-stats {
-  display: flex;
-  gap: 20px;
-}
-
-.stat-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 8px 16px;
-  border-radius: 20px;
-}
-
-.stat-item .icon {
-  font-size: 20px;
-}
-
-.stat-item .value {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.main-content {
-  padding: 20px;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.welcome-section {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.welcome-section h2 {
-  font-size: 24px;
-  color: #2d3748;
-  margin-bottom: 8px;
-}
-
-.welcome-section p {
-  font-size: 16px;
-  color: #718096;
-}
-
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  margin-bottom: 30px;
-}
-
-.menu-card {
-  background: white;
-  padding: 24px;
-  border-radius: 25px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 6px 6px 0px 0px rgba(139, 90, 43, 0.2);
-  border: 4px solid #8B5A2B;
-  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
-}
-
-.menu-card:hover {
-  transform: translateY(-6px) rotate(-2deg);
-  box-shadow: 8px 8px 0px 0px rgba(139, 90, 43, 0.3);
-}
-
-.card-icon {
-  font-size: 52px;
-  margin-bottom: 12px;
-  filter: drop-shadow(2px 2px 0px rgba(139, 90, 43, 0.2));
-}
-
-.menu-card h3 {
-  font-size: 20px;
-  color: #8B5A2B;
-  margin-bottom: 6px;
-  font-weight: 900;
-}
-
-.menu-card p {
-  font-size: 14px;
-  color: #8B5A2B;
-  font-weight: 600;
-}
-
-.menu-card.cards {
-  background: linear-gradient(135deg, #FFD93D 0%, #FFE5A0 100%);
-}
-
-.menu-card.game {
-  background: linear-gradient(135deg, #FF6B6B 0%, #FF8FAB 100%);
-  color: white;
-}
-
-.menu-card.game h3,
-.menu-card.game p {
-  color: white;
-  text-shadow: 2px 2px 0px rgba(139, 90, 43, 0.3);
-}
-
-.menu-card.story {
-  background: linear-gradient(135deg, #4ECDC4 0%, #A8E6CF 100%);
-}
-
-.menu-card.story h3,
-.menu-card.story p {
-  color: #fff;
-  text-shadow: 2px 2px 0px rgba(139, 90, 43, 0.2);
-}
-
-.menu-card.dashboard {
-  background: linear-gradient(135deg, #FF9F43 0%, #FFD93D 100%);
-}
-
-.menu-card.dashboard h3,
-.menu-card.dashboard p {
-  color: #8B5A2B;
-}
-
-.quick-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-.stat-card {
-  background: white;
-  padding: 16px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 4px 4px 0px 0px rgba(139, 90, 43, 0.2);
-  border: 3px solid #8B5A2B;
-}
-
-.stat-label {
-  font-size: 12px;
-  color: #8B5A2B;
-  margin-bottom: 6px;
-  font-weight: 600;
-}
-
-.stat-number {
-  font-size: 20px;
-  font-weight: 900;
-  color: #FF6B6B;
-}
-
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(180deg, #FFD93D 0%, #FF9F43 100%);
-  display: flex;
-  justify-content: space-around;
-  padding: 10px 0;
-  box-shadow: 0 -4px 0px 0px rgba(139, 90, 43, 0.2);
-  border-top: 4px solid #8B5A2B;
-  z-index: 100;
-}
-
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: #8B5A2B;
-  transition: all 0.3s;
-  padding: 8px 16px;
-  border-radius: 15px;
-  font-weight: 600;
-}
-
-.nav-item.active {
-  background: rgba(255, 255, 255, 0.5);
-  color: #FF6B6B;
-}
-
-.nav-icon {
-  font-size: 24px;
-  margin-bottom: 4px;
-  filter: drop-shadow(1px 1px 0px rgba(139, 90, 43, 0.2));
-}
-
-.nav-label {
-  font-size: 12px;
-  font-weight: 700;
-}
-
-@media (max-width: 640px) {
-  .menu-grid {
-    grid-template-columns: 1fr;
-  }
-}
-</style>

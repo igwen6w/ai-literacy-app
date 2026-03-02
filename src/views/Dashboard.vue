@@ -1,88 +1,138 @@
 <template>
-  <div class="dashboard">
-    <div class="top-bar">
-      <button @click="goBack" class="back-btn">← 返回</button>
-      <h2>学习报告</h2>
-      <div class="spacer"></div>
-    </div>
-
-    <!-- 总览卡片 -->
-    <div class="overview-cards">
-      <div class="overview-card primary">
-        <div class="card-icon">⭐</div>
-        <div class="card-value">{{ progress.totalStars }}</div>
-        <div class="card-label">总星星数</div>
+  <div class="min-h-screen bg-[#F5F5F5] pb-10">
+    <!-- Header -->
+    <header class="page-header !from-module-report !to-module-report-dark">
+      <div class="absolute top-4 right-8 w-20 h-20 bg-white/10 rounded-full animate-float"></div>
+      
+      <div class="page-header-content">
+        <button @click="goBack" class="glass rounded-xl px-4 py-2 flex items-center gap-2 text-white font-bold w-fit mb-4">
+          <span>←</span>
+          <span>返回</span>
+        </button>
+        
+        <h1 class="page-title">学习报告</h1>
+        <p class="page-subtitle">记录每个进步</p>
       </div>
+      
+      <svg class="wave-bottom" viewBox="0 0 1440 60" fill="none">
+        <path d="M0 60L60 52C120 44 240 28 360 24C480 20 600 28 720 32C840 36 960 36 1080 38C1200 40 1320 44 1380 46L1440 48V60H0Z" fill="#F5F5F5"/>
+      </svg>
+    </header>
 
-      <div class="overview-card success">
-        <div class="card-icon">📖</div>
-        <div class="card-value">{{ progress.totalLearnedCount }}</div>
-        <div class="card-label">已学汉字</div>
-      </div>
-
-      <div class="overview-card info">
-        <div class="card-icon">📅</div>
-        <div class="card-value">{{ progress.studyDays }}</div>
-        <div class="card-label">学习天数</div>
-      </div>
-    </div>
-
-    <!-- 学习统计 -->
-    <div class="stats-section">
-      <h3>学习统计</h3>
-      <div class="stats-grid">
-        <div class="stat-item">
-          <span class="stat-label">总学习时长</span>
-          <span class="stat-value">{{ formatTime(progress.totalStudyTime) }}</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-label">平均每天</span>
-          <span class="stat-value">{{ progress.studyDays > 0 ? Math.round(progress.totalStudyTime / progress.studyDays) : 0 }} 分钟</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-label">完成关卡</span>
-          <span class="stat-value">{{ completedLevels }} 个</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 已学汉字展示 -->
-    <div class="learned-hanzi-section">
-      <h3>已学汉字</h3>
-      <div class="hanzi-grid">
-        <div
-          v-for="char in Array.from(progress.learnedHanzi)"
-          :key="char"
-          class="hanzi-item"
-        >
-          {{ char }}
-        </div>
-      </div>
-    </div>
-
-    <!-- 关卡进度 -->
-    <div class="levels-section">
-      <h3>关卡进度</h3>
-      <div class="levels-list">
-        <div
-          v-for="i in 5"
-          :key="i"
-          class="level-item"
-        >
-          <div class="level-info">
-            <span class="level-name">第 {{ i }} 关</span>
-            <span class="level-stars">
-              {{ getStarsForLevel(i) }}
-            </span>
+    <main class="px-5 -mt-6 relative z-10 max-w-2xl mx-auto space-y-5">
+      <!-- Overview cards -->
+      <div class="grid grid-cols-3 gap-3">
+        <div class="card p-4 text-center">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-2xl mx-auto mb-2 shadow-md">
+            ⭐
           </div>
-          <div class="level-progress">
-            <div
-              class="progress-bar"
-              :style="{ width: (getStarsForLevel(i) / 3 * 100) + '%' }"
-            ></div>
+          <div class="text-2xl font-black text-gray-800">{{ progress.totalStars }}</div>
+          <div class="text-xs text-gray-500">总星星</div>
+        </div>
+
+        <div class="card p-4 text-center">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center text-2xl mx-auto mb-2 shadow-md">
+            📖
+          </div>
+          <div class="text-2xl font-black text-gray-800">{{ progress.totalLearnedCount }}</div>
+          <div class="text-xs text-gray-500">已学汉字</div>
+        </div>
+
+        <div class="card p-4 text-center">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-module-game to-module-game-dark flex items-center justify-center text-2xl mx-auto mb-2 shadow-md">
+            📅
+          </div>
+          <div class="text-2xl font-black text-gray-800">{{ progress.studyDays }}</div>
+          <div class="text-xs text-gray-500">学习天数</div>
+        </div>
+      </div>
+
+      <!-- Detailed stats -->
+      <div class="card p-5">
+        <h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <span class="w-7 h-7 rounded-lg bg-brand-500 text-white flex items-center justify-center text-xs">📊</span>
+          详细统计
+        </h3>
+        
+        <div class="space-y-3">
+          <div class="flex items-center justify-between p-3.5 bg-brand-50 rounded-xl">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-brand-100 flex items-center justify-center text-lg">⏱️</div>
+              <span class="text-sm font-medium text-gray-700">总学习时长</span>
+            </div>
+            <span class="font-bold text-brand-600">{{ formatTime(progress.totalStudyTime) }}</span>
+          </div>
+          
+          <div class="flex items-center justify-between p-3.5 bg-module-game-light rounded-xl">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-module-game/20 flex items-center justify-center text-lg">📈</div>
+              <span class="text-sm font-medium text-gray-700">平均每天</span>
+            </div>
+            <span class="font-bold text-module-game">{{ progress.studyDays > 0 ? Math.round(progress.totalStudyTime / progress.studyDays) : 0 }} 分钟</span>
+          </div>
+          
+          <div class="flex items-center justify-between p-3.5 bg-module-cards-light rounded-xl">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-module-cards/20 flex items-center justify-center text-lg">🏆</div>
+              <span class="text-sm font-medium text-gray-700">完成关卡</span>
+            </div>
+            <span class="font-bold text-module-cards">{{ completedLevels }} 个</span>
           </div>
         </div>
       </div>
+
+      <!-- Learned characters -->
+      <div class="card p-5">
+        <h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <span class="w-7 h-7 rounded-lg bg-module-cards text-white flex items-center justify-center text-xs">📝</span>
+          已学汉字
+        </h3>
+        
+        <div v-if="progress.learnedHanzi.size > 0" class="flex flex-wrap gap-2">
+          <div v-for="char in Array.from(progress.learnedHanzi)" :key="char"
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-brand-600 text-white flex items-center justify-center text-lg font-bold shadow-md">
+            {{ char }}
+          </div>
+        </div>
+        <div v-else class="text-center py-8 text-gray-400">
+          <div class="text-4xl mb-2">📚</div>
+          <p class="text-sm">还没有学习汉字，快去开始吧！</p>
+        </div>
+      </div>
+
+      <!-- Level progress -->
+      <div class="card p-5">
+        <h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <span class="w-7 h-7 rounded-lg bg-module-game text-white flex items-center justify-center text-xs">🎮</span>
+          关卡进度
+        </h3>
+        
+        <div class="space-y-3">
+          <div v-for="i in 5" :key="i" class="p-3.5 bg-gray-50 rounded-xl">
+            <div class="flex justify-between items-center mb-2">
+              <span class="font-bold text-gray-700 text-sm">第 {{ i }} 关</span>
+              <div class="flex items-center gap-0.5">
+                <span v-for="star in 3" :key="star" class="text-sm"
+                  :class="getLevelStarCount(i) >= star ? 'text-yellow-400' : 'text-gray-200'">
+                  {{ getLevelStarCount(i) >= star ? '★' : '☆' }}
+                </span>
+              </div>
+            </div>
+            <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full transition-all"
+                :style="{ width: (getLevelStarCount(i) / 3 * 100) + '%' }"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom bar -->
+    <div class="fixed bottom-0 left-0 right-0 h-1 flex">
+      <div class="flex-1 bg-module-cards"></div>
+      <div class="flex-1 bg-module-game"></div>
+      <div class="flex-1 bg-module-story"></div>
+      <div class="flex-1 bg-module-report"></div>
     </div>
   </div>
 </template>
@@ -99,202 +149,14 @@ const completedLevels = computed(() => {
   return Object.values(progress.levelProgress).filter(l => l.completed).length
 })
 
-function getStarsForLevel(levelId) {
-  const stars = progress.getLevelStars(levelId)
-  return '⭐'.repeat(stars) + '☆'.repeat(3 - stars)
-}
+const getLevelStarCount = (levelId) => progress.getLevelStars(levelId)
 
-function formatTime(minutes) {
-  if (minutes < 60) {
-    return `${minutes} 分钟`
-  }
+const formatTime = (minutes) => {
+  if (minutes < 60) return `${minutes} 分钟`
   const hours = Math.floor(minutes / 60)
   const mins = minutes % 60
   return `${hours} 小时 ${mins} 分钟`
 }
 
-function goBack() {
-  router.push('/')
-}
+const goBack = () => router.push('/')
 </script>
-
-<style scoped>
-.dashboard {
-  min-height: 100vh;
-  padding: 20px;
-  padding-bottom: 80px;
-}
-
-.top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 25px;
-}
-
-.back-btn {
-  padding: 8px 16px;
-  border: none;
-  background: #e2e8f0;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.spacer {
-  width: 70px;
-}
-
-.overview-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  margin-bottom: 30px;
-}
-
-.overview-card {
-  background: white;
-  padding: 20px;
-  border-radius: 16px;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-}
-
-.card-icon {
-  font-size: 32px;
-  margin-bottom: 10px;
-}
-
-.card-value {
-  font-size: 28px;
-  font-weight: bold;
-  color: #2d3748;
-  margin-bottom: 5px;
-}
-
-.card-label {
-  font-size: 14px;
-  color: #718096;
-}
-
-.overview-card.primary {
-  background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
-}
-
-.overview-card.success {
-  background: linear-gradient(135deg, #55efc4 0%, #00b894 100%);
-}
-
-.overview-card.info {
-  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
-}
-
-.stats-section,
-.learned-hanzi-section,
-.levels-section {
-  background: white;
-  padding: 20px;
-  border-radius: 16px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-}
-
-h3 {
-  font-size: 20px;
-  color: #2d3748;
-  margin-bottom: 15px;
-}
-
-.stats-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.stat-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px;
-  background: #f7fafc;
-  border-radius: 10px;
-}
-
-.stat-label {
-  font-size: 15px;
-  color: #4a5568;
-}
-
-.stat-value {
-  font-size: 16px;
-  font-weight: bold;
-  color: #4caf50;
-}
-
-.hanzi-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.hanzi-item {
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  border-radius: 10px;
-}
-
-.levels-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.level-item {
-  padding: 12px;
-  background: #f7fafc;
-  border-radius: 10px;
-}
-
-.level-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.level-name {
-  font-size: 15px;
-  font-weight: 600;
-  color: #2d3748;
-}
-
-.level-stars {
-  font-size: 14px;
-}
-
-.level-progress {
-  height: 6px;
-  background: #e2e8f0;
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, #4caf50, #8bc34a);
-  transition: width 0.5s ease;
-}
-
-@media (max-width: 640px) {
-  .overview-cards {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
